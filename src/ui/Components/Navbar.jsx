@@ -18,7 +18,7 @@ const onLogout =() => {
     <nav className="navbar navbar-expand-lg navbar-dark p-2">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Home Helpers
+          Home Helpers CO
         </Link>
         <button
           className="custom-toggler navbar-toggler"
