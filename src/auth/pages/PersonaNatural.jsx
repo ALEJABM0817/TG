@@ -4,10 +4,18 @@ import Ubicacion from "../../assets/images/icons/edificio-de-oficinas.png";
 import Phone from "../../assets/images/icons/phone.png";
 import Email from "../../assets/images/icons/email.png";
 import Candado from "../../assets/images/icons/candado.png";
+import Photograph from "../../assets/images/icons/photo.png"
+
 import { Link } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { createUsuario } from "../../api/usuarios.api";
+import { useState } from "react";
 export const PersonaNatural = () => {
+  const [imgLoad, setImgLoad] = useState(false);
+
+  const handleImgLoad = (value) => {
+    setImgLoad(value);
+  }
   return (
     <div className="form-register-container">
       <section className="form-Register">
@@ -131,10 +139,32 @@ export const PersonaNatural = () => {
                 />
               </div>
 
+              <div className="container-radios">
+                <input onClick={() => handleImgLoad(false)} id="solicitar" name="servicio" type="radio" value="solicitar" />
+                <label htmlFor="solicitar">
+                  Quiero <span>solicitar</span> un servcio
+                </label>
+              </div>
+
+              <div className="container-radios">
+                <input onClick={() => handleImgLoad(true)} id="ofrecer" name="servicio" type="radio" value="ofrecer" />
+                <label htmlFor="ofrecer">
+                  Quiero <span>ofrecer</span> un servicio
+                </label>
+              </div>
+
+              {
+                imgLoad &&
+                  <div className="container-input">
+                    <img src={Photograph} alt="Icono de foto" />
+                    <input className="controls" type="file" name="fotografía" id="foto" />
+                  </div>
+              }
+             
               <button className="buttons" type="submit" value="Registrarse">
                 Registrarse
               </button>
-
+              
               <p>
                 <Link to="/login">Inicia tu sesión</Link>
               </p>

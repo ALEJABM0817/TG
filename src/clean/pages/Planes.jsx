@@ -1,4 +1,3 @@
-import React from "react";
 import { PlanesItem } from "./Planes/PlanesItem";
 import imgcalendar from "../../assets/images/icons/calendar.png";
 

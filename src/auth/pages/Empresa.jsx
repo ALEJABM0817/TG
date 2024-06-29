@@ -43,10 +43,7 @@ export const Empresa = () => {
           <input className="controls" type="password" name="Contraseña" id="contraseña" placeholder="Contraseña" />
         </div>
 
-        <div className="container-input">
-          <img src={Photograph} alt="Icono de foto" />
-          <input className="controls" type="file" name="fotografía" id="foto" />
-        </div>
+        
         
         <input className="buttons" type="submit" value="Registrarse" />
         

@@ -12,6 +12,16 @@
   .form-register-container {
     height: 100vh;
     display: flex;
+
+    .container-radios {
+      input {
+        margin-right: 10px;
+      }
+
+      span {
+        text-decoration: underline;
+      }
+    }
   }
 
   .navbar {
@@ -151,10 +161,11 @@
       flex-wrap: wrap;
       gap: 50px;
       justify-content: center;
+      padding: 20px;
     }
   }
 
-.container-planes {
+.container-planes, .ofertantes-content {
     width: 360px;
     background: #aacce8;
     padding: 50px;
@@ -329,6 +340,28 @@
   
     &:hover {
       background-color: #027017;
+    }
+  }
+
+  .ofertantes-container {
+    display: flex;
+    gap: 15px;
+    justify-content: space-around;
+    padding: 10px;
+    flex-wrap: wrap;
+    
+    .ofertantes-content {
+      padding: 20px;
+      width: 200px;
+      height: max-content;
+
+      .container-img img {
+        width: 100px;
+      }
+
+      p {
+        padding: 0;
+      }
     }
   }
   

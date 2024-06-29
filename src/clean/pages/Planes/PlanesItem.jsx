@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const PlanesItem = ({title, content, imgSrc}) => {
   return (
     <div className="container-planes">

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -8,16 +7,15 @@ import 'swiper/css/navigation';
 
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
-import slide_image_1 from '../../assets/images/slider/img_1.jpg';
-import slide_image_2 from '../../assets/images/slider/img_2.jpg';
-import slide_image_3 from '../../assets/images/slider/img_3.jpg';
-import slide_image_4 from '../../assets/images/slider/img_4.jpg';
-import slide_image_5 from '../../assets/images/slider/img_5.jpg';
+import slide_image_1 from '../../assets/images/slider/servicios.png';
+import slide_image_2 from '../../assets/images/slider/plomeria.png';
+import slide_image_3 from '../../assets/images/slider/aseog.png';
+import slide_image_4 from '../../assets/images/slider/jardineria.png';
+import slide_image_5 from '../../assets/images/slider/lavanderia.png';
 
 export const Slider = () => {
   return (
     <div className="container">
-      <h1 className="heading">Flower Gallery</h1>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
