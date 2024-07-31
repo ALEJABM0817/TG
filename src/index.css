@@ -30,9 +30,15 @@ body {
   min-height: 100vh;
 }
 
-h1, h2 {
+h1, h2,h5 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+
+.centered-image {
+  max-width: 100%;
+  height: auto;
 }
 
 button {

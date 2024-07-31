@@ -16,6 +16,9 @@ export const startLogin = ({cedula , password}) => {
 
         if(!result.ok) return dispatch(logout({errorMessage: result.errorMessage}));
 
+        localStorage.setItem('token', result.token)
+        localStorage.setItem('token-init-date', new Date().getTime())
+
         dispatch(login(result))
     }
 }
