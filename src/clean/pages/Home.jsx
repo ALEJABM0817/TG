@@ -6,6 +6,7 @@ import img2 from "../../../src/assets/images/home/img2.png";
 import img3 from "../../../src/assets/images/home/img3.png";
 import img4 from "../../../src/assets/images/home/img4.png";
 import img5 from "../../../src/assets/images/home/img5.png";
+import { Footer } from "../../ui/Components/Footer";
 
 export const Home = () => {
   return (
@@ -71,6 +72,7 @@ export const Home = () => {
       </div>
       <h1 className="title-services">Nuestros servicios</h1>
       <Slider />
+  <Footer/>
     </>
   );
 };

@@ -14,6 +14,31 @@
     text-align: center;
     font-weight: bold;
 }
+
+.container-footer{
+    background-color: #3e4c56;
+    padding-left: 50px;
+}
+
+.colum{
+    padding:10px;
+   
+    h5{
+        font-weight: bold;
+        font-size: 22px;
+        color: white;
+    }
+}
+
+.text-secundary {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    &:hover {
+        color: hsl(240, 11%, 64%);
+    }
+}
+
 .container-services {
     margin-top: 25px;
     display: flex;

@@ -31,6 +31,7 @@ export const AppRouter = () => {
           <Route path="Empresa" element={ <Empresa /> } />
           <Route path="/*" element={ <CleanRouter /> } />
           <Route path="CV" element={ <CV /> } />
+          
       </Routes>
     </>
   )
