@@ -1,4 +1,4 @@
-import { getUsuario } from "../../api/usuarios.api"
+import usuariosApi, { getUsuario } from "../../api/usuarios.api"
 import { checkingCredentials, login, logout } from "./"
 
 export const checkingAuthentication = (email, password) => {
@@ -9,16 +9,19 @@ export const checkingAuthentication = (email, password) => {
 
 export const startLogin = ({cedula , password}) => {
     return async (dispatch) => {
-        dispatch(checkingCredentials());
+        try {
+            dispatch(checkingCredentials());
 
-        const result = await getUsuario({cedula, password});
-        console.log(result)
+            const { data } = await usuariosApi.post('auth',{cedula, password});
+            console.log(data)
 
-        if(!result.ok) return dispatch(logout({errorMessage: result.errorMessage}));
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('token-init-date', new Date().getTime())
 
-        localStorage.setItem('token', result.token)
-        localStorage.setItem('token-init-date', new Date().getTime())
-
-        dispatch(login(result))
+            dispatch(login(data))
+        } catch (error) {
+            console.log(error)
+            dispatch(logout({errorMessage: error.response.data.message}));
+        }
     }
 }
