@@ -26,6 +26,17 @@
 
   .navbar {
     background-color: #0071ce;
+
+    .header-container-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 15px;
+
+      span {
+        color: rgba(255, 255, 255, .55);
+      }
+    }
   }
 
   .form-Register {

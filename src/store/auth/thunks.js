@@ -1,5 +1,5 @@
-import usuariosApi, { getUsuario } from "../../api/usuarios.api"
-import { checkingCredentials, login, logout } from "./"
+import usuariosApi from "../../api/usuarios.api"
+import { checkingCredentials, login, logout, isCompleteInfo } from "./"
 
 export const checkingAuthentication = (email, password) => {
     return async(dispatch) => {
@@ -13,15 +13,75 @@ export const startLogin = ({cedula , password}) => {
             dispatch(checkingCredentials());
 
             const { data } = await usuariosApi.post('auth',{cedula, password});
-            console.log(data)
-
             localStorage.setItem('token', data.token)
             localStorage.setItem('token-init-date', new Date().getTime())
+
+            if(data.type_user === 'ofertante') {
+                const dataOfetante = await usuariosApi.post('is-complete-info',{cedula})
+                dispatch(isCompleteInfo(dataOfetante.data));
+            }
 
             dispatch(login(data))
         } catch (error) {
             console.log(error)
             dispatch(logout({errorMessage: error.response.data.message}));
         }
+    }
+}
+
+export const startRegister = (dataRegister) => {
+    return async (dispatch) => {
+        try {
+            dispatch(checkingCredentials());
+
+            const { data } = await usuariosApi.post('user', dataRegister);
+
+            localStorage.setItem('token', data.token );
+            localStorage.setItem('token-init-date', new Date().getTime() );
+            dispatch(login(data));
+        } catch (error) {
+            dispatch(logout({errorMessage: error.response.data.message}));
+        }
+    }
+}
+
+export const chekcAuthToken = () => {
+    return async (dispatch) => {
+        const token = localStorage.getItem('token');
+        if(!token) return dispatch(logout());
+
+        try {
+            const { data } = await usuariosApi.get('renew');
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+
+            if(data.type_user === 'ofertante') {
+                const dataOfetante = await usuariosApi.post('is-complete-info',{"cedula": data.cedula})
+                dispatch(isCompleteInfo(dataOfetante.data));
+            }
+
+            dispatch(login(data));
+        } catch (error) {
+            localStorage.clear();
+            dispatch(logout());
+        }
+    }
+}
+
+export const checkCompleteInfo = (cedula) => {
+    return async (dispatch) => {
+        try {
+            const {data} = await usuariosApi.post('is-complete-info', {cedula});
+            dispatch(isCompleteInfo(data));
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const startLogout = () => {
+    localStorage.clear();
+    return async (dispatch) => {
+        dispatch(logout());
     }
 }

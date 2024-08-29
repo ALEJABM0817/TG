@@ -1,0 +1,130 @@
+$form-padding: 20px;
+$form-border-radius: 8px;
+$form-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+$input-border: 1px solid #ccc;
+$input-border-radius: 4px;
+$input-padding: 10px;
+$label-color: #333;
+$button-bg-color: #007bff;
+$button-text-color: #fff;
+$button-padding: 10px 20px;
+$button-border-radius: 4px;
+$button-hover-bg-color: darken($button-bg-color, 10%);
+$error-color: #e74c3c;
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: $form-padding;
+    background-color: #f9f9f9;
+    border-radius: $form-border-radius;
+    box-shadow: $form-box-shadow;
+    margin-top: 25px;
+
+  .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      color: $label-color;
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: $input-padding;
+      margin-bottom: 10px;
+      border: $input-border;
+      border-radius: $input-border-radius;
+      font-size: 14px;
+      background-color: #fff;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: $button-bg-color;
+        outline: none;
+      }
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+  }
+
+  .file-preview {
+    margin-top: 10px;
+    max-width: 200px;
+    max-height: 200px;
+
+    .preview-image {
+      width: 100%;
+      height: auto;
+      border-radius: $input-border-radius;
+    }
+  }
+
+  .error {
+    color: $error-color;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .experience-section {
+    margin-bottom: 20px;
+  }
+
+  .experience-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    background-color: #fff;
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .remove-button {
+      background-color: $error-color;
+      color: #fff;
+      padding: $button-padding;
+      border: none;
+      border-radius: $button-border-radius;
+      cursor: pointer;
+      width: 100%;
+
+      &:hover {
+        background-color: darken($error-color, 10%);
+      }
+    }
+  }
+
+  .add-button,
+  .submit-button {
+    background-color: $button-bg-color;
+    color: $button-text-color;
+    padding: $button-padding;
+    border: none;
+    border-radius: $button-border-radius;
+    cursor: pointer;
+    margin-right: 10px;
+    width: 100%;
+
+    &:hover {
+      background-color: $button-hover-bg-color;
+    }
+
+    &:disabled {
+      background-color: lighten($button-bg-color, 20%);
+      cursor: not-allowed;
+    }
+  }
+}

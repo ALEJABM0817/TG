@@ -11,7 +11,7 @@ import { Form, Formik } from "formik";
 import { useState } from "react";
 import { startRegister } from "../../store/auth";
 import { useDispatch } from "react-redux";
-export const PersonaNatural = () => {
+export const PersonaOfertante = () => {
   const dispatch = useDispatch();
   const [imgLoad, setImgLoad] = useState(false);
 
@@ -21,7 +21,7 @@ export const PersonaNatural = () => {
   return (
     <div className="form-register-container">
       <section className="form-Register">
-        <h4>Formulario de Registro Cliente</h4>
+        <h4>Formulario de Registro Ofertante</h4>
         <Formik
           initialValues={{
             nombre: "",
@@ -31,7 +31,7 @@ export const PersonaNatural = () => {
             email: "",
             password: "",
             password2: "",
-            typeUser: "solicitante"
+            typeUser: "ofertante"
           }}
 
           onSubmit={(values) => {

@@ -86,7 +86,7 @@ export const LoginPage = () => {
 
               <p className="info-text">¿Aún no eres miembro?</p>
               <p className="info-text">
-                <Link to="/PersonaNatural">Regístrate aquí.</Link>
+                <Link to="/register">Regístrate aquí.</Link>
               </p>
             </Form>
           )}

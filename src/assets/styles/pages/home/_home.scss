@@ -49,6 +49,11 @@
 
     .container-services__item {
         padding: 5px;
+        background-color: #fff;
+        margin-bottom: 1rem;
+        box-shadow: 0 0 40px 0 rgba(90, 90, 90, .1), 0 0 1px 0 rgba(0, 0, 0, .05);
+        padding: 20px;
+        max-width: 300px;
         h2 {
             font-weight: bold;
             font-size: 24px;
@@ -65,11 +70,5 @@
             padding: 5px; 
             display: flex;
         }
-
-        background-color: #fff;
-        margin-bottom: 1rem;
-        box-shadow: 0 0 40px 0 rgba(90, 90, 90, .1), 0 0 1px 0 rgba(0, 0, 0, .05);
-        padding: 20px;
-        max-width: 300px;
     }
 }
