@@ -19,7 +19,8 @@ export const authSlice = createSlice({
         state.displayName = payload.name || payload.nombre;
         state.photoURL = payload?.photURL || '';
         state.errorMessage = null;
-        state.typeUser = payload.type_user;
+        state.typeUser = payload.typeUser;
+        console.log(payload)
     },
     logout: (state,  { payload } ) => {
         state.status= 'no-authenticated'; // 'checking', 'authenticated'

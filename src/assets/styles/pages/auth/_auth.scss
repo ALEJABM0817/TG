@@ -26,6 +26,13 @@
 
   .navbar {
     background-color: #0071ce;
+    position: sticky; 
+    width: 100%;
+    top: 0; 
+    z-index: 1000; 
+    padding: 10px 0;
+
+
 
     .header-container-right {
       display: flex;

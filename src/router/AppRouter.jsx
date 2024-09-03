@@ -39,7 +39,7 @@ export const AppRouter = () => {
                         </>
                     )
 
-                    : (typeUser === 'ofertante' && completeInfo) ? (
+                    : ((typeUser === 'ofertante' && completeInfo) || typeUser !== 'ofertante') ? (
                         <>
                             <Route path="/panel" element={<Panel />} />
                             <Route path="/*" element={<Navigate to="/panel" />} />

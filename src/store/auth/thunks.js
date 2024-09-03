@@ -16,14 +16,12 @@ export const startLogin = ({cedula , password}) => {
             localStorage.setItem('token', data.token)
             localStorage.setItem('token-init-date', new Date().getTime())
 
-            if(data.type_user === 'ofertante') {
+            if(data.typeUser === 'ofertante') {
                 const dataOfetante = await usuariosApi.post('is-complete-info',{cedula})
                 dispatch(isCompleteInfo(dataOfetante.data));
             }
-
             dispatch(login(data))
         } catch (error) {
-            console.log(error)
             dispatch(logout({errorMessage: error.response.data.message}));
         }
     }
@@ -40,6 +38,7 @@ export const startRegister = (dataRegister) => {
             localStorage.setItem('token-init-date', new Date().getTime() );
             dispatch(login(data));
         } catch (error) {
+            console.log(error)
             dispatch(logout({errorMessage: error.response.data.message}));
         }
     }
@@ -55,11 +54,11 @@ export const chekcAuthToken = () => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
 
-            if(data.type_user === 'ofertante') {
+            if(data.typeUser === 'ofertante') {
                 const dataOfetante = await usuariosApi.post('is-complete-info',{"cedula": data.cedula})
                 dispatch(isCompleteInfo(dataOfetante.data));
             }
-
+            console.log(data)
             dispatch(login(data));
         } catch (error) {
             localStorage.clear();
