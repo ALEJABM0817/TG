@@ -1,5 +1,5 @@
 import usuariosApi from "../../api/usuarios.api"
-import { checkingCredentials, login, logout, isCompleteInfo } from "./"
+import { checkingCredentials, login, logout, isCompleteInfo, setOfertantes, setOfertanteCV } from "./"
 
 export const checkingAuthentication = (email, password) => {
     return async(dispatch) => {
@@ -58,7 +58,6 @@ export const chekcAuthToken = () => {
                 const dataOfetante = await usuariosApi.post('is-complete-info',{"cedula": data.cedula})
                 dispatch(isCompleteInfo(dataOfetante.data));
             }
-            console.log(data)
             dispatch(login(data));
         } catch (error) {
             localStorage.clear();
@@ -82,5 +81,28 @@ export const startLogout = () => {
     localStorage.clear();
     return async (dispatch) => {
         dispatch(logout());
+    }
+}
+
+export const getOfertantes = () => {
+    return async (dispatch) => {
+        try {
+            const { data } = await usuariosApi.get('ofertantes');
+            dispatch(setOfertantes(data));
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const getOfertanteForCV = (cedula) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await usuariosApi.post('ofertanteCV', {cedula});
+            dispatch(setOfertanteCV(data));
+            return data;
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

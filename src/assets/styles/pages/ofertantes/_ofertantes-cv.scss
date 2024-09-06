@@ -1,0 +1,95 @@
+.cv-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+
+    .back-btn {
+        margin-bottom: 10px;
+        background-color: #eee;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+            background-color: #ddd;
+        }
+    }
+
+    .cv-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+
+        .cv-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;            
+
+            .cv-image {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 2px solid #ddd;
+            }
+        }
+
+        .cv-content {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            .cv-body {
+                width: calc(50% - 10px);
+                min-width: 250px;
+                p {
+                    margin: 10px 0;
+                    font-size: 16px;
+                    line-height: 1.5;
+
+                    strong {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .cv-rating {
+            margin-top: 20px;
+            span {
+                font-size: 24px;
+                color: gold;
+            }
+        }
+
+        .solicitar-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
+}

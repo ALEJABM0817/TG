@@ -1,2 +1,2 @@
 export * from './pages';
-export * from './routes/CleanPage';
+export * from './routes/CleanRouter';

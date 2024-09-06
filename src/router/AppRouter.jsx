@@ -1,15 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { CleanRouter } from "../clean/pages/CleanRouter"
-import { LoginPage } from "../auth/pages/LoginPage"
-import { PersonaNatural } from "../auth/pages/PersonaNatural"
-import { Empresa } from "../auth/pages/Empresa"
-import { CV } from "../clean/pages/CV"
+import { CleanRouter } from "../clean/pages/routes/CleanRouter"
 import { useDispatch, useSelector } from "react-redux"
 import { CheckingAuth } from "../ui/"
 import { useEffect } from "react"
-import { checkCompleteInfo, chekcAuthToken } from "../store/auth"
 import { CompleteInfo } from "../clean/pages/admin/CompleteInfo"
 import { Panel } from "../clean/pages/admin/Panel"
+import { OfertantesRouter } from "../clean/pages/routes/OfertantesRouter"
 
 
 export const AppRouter = () => {
@@ -22,7 +18,6 @@ export const AppRouter = () => {
         dispatch(chekcAuthToken())
     }, [])
 
-    console.log(status, typeUser, uid)
     if (status === 'checking') {
         return <CheckingAuth />
     }
@@ -39,7 +34,7 @@ export const AppRouter = () => {
                         </>
                     )
 
-                    : ((typeUser === 'ofertante' && completeInfo) || typeUser !== 'ofertante') ? (
+                    : ((typeUser === 'ofertante' && completeInfo) ) ? (
                         <>
                             <Route path="/panel" element={<Panel />} />
                             <Route path="/*" element={<Navigate to="/panel" />} />
@@ -47,7 +42,11 @@ export const AppRouter = () => {
                         </>
                     )
 
-                        : (
+                        :  typeUser == 'solicitante' ? (
+                            <>
+                                <Route path="/*" element={<OfertantesRouter />} />
+                            </>
+                        ) : (
                             <>
                                 <Route path="/complete-info" element={<CompleteInfo />} />
                                 <Route path="/*" element={<Navigate to="/complete-info" />} />
