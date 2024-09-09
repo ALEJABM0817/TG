@@ -25,7 +25,7 @@
   }
 
   .navbar {
-    background-color: #0071ce;
+    background-color: #0071ce; 
     position: sticky; 
     width: 100%;
     top: 0; 
@@ -49,7 +49,7 @@
   .form-Register {
     width: 90%;
     max-width: 400px;
-    background: #aacce8;
+    background: rgb(220, 225, 230);
     padding: 35px;
     margin: auto;
     border-radius: 4px;
@@ -186,7 +186,7 @@
 
 .container-planes, .ofertantes-content {
     width: 360px;
-    background: #aacce8;
+    background:rgb(220, 225, 230);
     padding: 50px;
     border-radius: 4px;
     font-family: 'calibri';
@@ -366,6 +366,12 @@
     background-color: #f0f4f8;
 }
 
+.ofertantes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
 .ofertantes-card {
     background-color: #ffffff;
     border-radius: 10px;
@@ -374,6 +380,8 @@
     margin: auto;
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    min-width: 250px;
 
     &:hover {
         transform: translateY(-10px);
@@ -476,7 +484,7 @@
     margin-top: 20px;
 }
 
-.popup-buttons button {
+.popup-buttons .botton {
     background-color: #2563eb;
     color: white;
     padding: 10px 20px;

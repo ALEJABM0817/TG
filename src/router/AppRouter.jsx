@@ -6,6 +6,8 @@ import { useEffect } from "react"
 import { CompleteInfo } from "../clean/pages/admin/CompleteInfo"
 import { Panel } from "../clean/pages/admin/Panel"
 import { OfertantesRouter } from "../clean/pages/routes/OfertantesRouter"
+import { chekcAuthToken } from "../store/auth"
+import { PanelCopy } from "../clean/pages/admin/PanelCopy"
 
 
 export const AppRouter = () => {
@@ -36,7 +38,7 @@ export const AppRouter = () => {
 
                     : ((typeUser === 'ofertante' && completeInfo) ) ? (
                         <>
-                            <Route path="/panel" element={<Panel />} />
+                            <Route path="/panel" element={<PanelCopy />} />
                             <Route path="/*" element={<Navigate to="/panel" />} />
 
                         </>

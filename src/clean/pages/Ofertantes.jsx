@@ -16,12 +16,14 @@ export const Ofertantes = () => {
             <h2>Ofertantes</h2>
             <div className="ofertantes-container">
                 {ofertantes.map((oferService) => (
-                    <OfertantesItem
-                        key={oferService.cedula}
-                        imgSrc={oferService.photo}
-                        areas={oferService.areas}
-                        id={oferService.cedula}
-                    />
+                    oferService.complete_info ?
+                        <OfertantesItem
+                            key={oferService.cedula}
+                            imgSrc={oferService.photo}
+                            areas={oferService.areas}
+                            id={oferService.cedula}
+                        />
+                    : ''
                 ))}
             </div>
         </section>

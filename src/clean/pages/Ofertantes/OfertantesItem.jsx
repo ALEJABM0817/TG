@@ -51,8 +51,8 @@ export const OfertantesItem = ({ imgSrc, areas, id}) => {
                     <div className="popup-content">
                         <h3>Para contratar debes iniciar sesión o registrarte</h3>
                         <div className="popup-buttons">
-                            <Link to="/Login">Iniciar Sesión</Link>
-                            <Link to="/Register">Registrarse</Link>
+                            <Link className="botton" to="/Login">Iniciar Sesión</Link>
+                            <Link className="botton" to="/Register">Registrarse</Link>
                         </div>
                         <button className="popup-close" onClick={() => setShowPopup(false)}>Cerrar</button>
                     </div>
