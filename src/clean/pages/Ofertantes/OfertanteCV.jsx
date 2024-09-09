@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOfertanteForCV } from '../../../store/auth';
 import { useEffect, useState } from 'react';
+import { Loader } from '../Loader/Loader';
 
 export const OfertanteCV = () => {
     const { id } = useParams();
@@ -27,7 +28,7 @@ export const OfertanteCV = () => {
             <button className="back-btn" onClick={() => navigate(-1)}>Volver</button>
 
             {isLoading ? (
-                <p>Cargando...</p>
+                <Loader />
             ) : (
                 <div className="cv-content-wrapper">
                     <div className="cv-header">

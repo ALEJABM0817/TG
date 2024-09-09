@@ -6,7 +6,6 @@ import { getOfertantes } from "../../store/auth";
 export const Ofertantes = () => {
     const dispatch = useDispatch();
     const { ofertantes } = useSelector((state) => state.users);
-    console.log(ofertantes);
     useEffect(() => {
         dispatch(getOfertantes());
     }, []);

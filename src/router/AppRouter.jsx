@@ -8,6 +8,7 @@ import { Panel } from "../clean/pages/admin/Panel"
 import { OfertantesRouter } from "../clean/pages/routes/OfertantesRouter"
 import { chekcAuthToken } from "../store/auth"
 import { PanelCopy } from "../clean/pages/admin/PanelCopy"
+import { Loader } from "../clean/pages/Loader/Loader"
 
 
 export const AppRouter = () => {
@@ -21,7 +22,7 @@ export const AppRouter = () => {
     }, [])
 
     if (status === 'checking') {
-        return <CheckingAuth />
+        return <Loader />
     }
 
     return (
