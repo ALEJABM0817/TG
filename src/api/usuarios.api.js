@@ -22,4 +22,11 @@ export const createUsuario = async (usuario) =>
 export const completeInfo = async (usuarioInfo) =>
     await usuariosApi.post("/upload-data", usuarioInfo);
 
+export const getUserData = async (cedula) =>
+    await usuariosApi.get("/get-user", {
+        headers: {
+            'cedula': cedula
+        }
+    });
+
 export default usuariosApi;

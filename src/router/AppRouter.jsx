@@ -1,14 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { CleanRouter } from "../clean/pages/routes/CleanRouter"
 import { useDispatch, useSelector } from "react-redux"
-import { CheckingAuth } from "../ui/"
 import { useEffect } from "react"
 import { CompleteInfo } from "../clean/pages/admin/CompleteInfo"
-import { Panel } from "../clean/pages/admin/Panel"
-import { OfertantesRouter } from "../clean/pages/routes/OfertantesRouter"
+import { SolicitanteRouter } from "../clean/pages/routes/SolicitanteRouter"
 import { chekcAuthToken } from "../store/auth"
-import { PanelCopy } from "../clean/pages/admin/PanelCopy"
 import { Loader } from "../clean/pages/Loader/Loader"
+import { OfertanteRouter } from "../clean/pages/routes/OfertanteRouter"
 
 
 export const AppRouter = () => {
@@ -39,15 +37,13 @@ export const AppRouter = () => {
 
                     : ((typeUser === 'ofertante' && completeInfo) ) ? (
                         <>
-                            <Route path="/panel" element={<PanelCopy />} />
-                            <Route path="/*" element={<Navigate to="/panel" />} />
-
+                            <Route path="/*" element={ <OfertanteRouter /> } />
                         </>
                     )
 
                         :  typeUser == 'solicitante' ? (
                             <>
-                                <Route path="/*" element={<OfertantesRouter />} />
+                                <Route path="/*" element={<SolicitanteRouter />} />
                             </>
                         ) : (
                             <>

@@ -20,6 +20,7 @@ export const authSlice = createSlice({
         state.photoURL = payload?.photURL || '';
         state.errorMessage = null;
         state.typeUser = payload.typeUser;
+        state.telepono = payload.telefono;
         console.log(payload)
     },
     logout: (state,  { payload } ) => {

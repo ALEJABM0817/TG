@@ -8,8 +8,11 @@ export const infoSlice = createSlice({
   reducers: {
     isCompleteInfo: (state, { payload }) => {
         state.completeInfo = payload.complete_info;
+    },
+    setResetCompleteInfo: (state) => {
+      state.completeInfo = false;
     }
   },
 });
 
-export const { isCompleteInfo } = infoSlice.actions
+export const { isCompleteInfo, setResetCompleteInfo } = infoSlice.actions

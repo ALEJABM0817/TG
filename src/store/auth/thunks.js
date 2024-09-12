@@ -1,5 +1,5 @@
 import usuariosApi from "../../api/usuarios.api"
-import { checkingCredentials, login, logout, isCompleteInfo, setOfertantes, setOfertanteCV } from "./"
+import { checkingCredentials, login, logout, isCompleteInfo, setOfertantes, setOfertanteCV, setResetCompleteInfo } from "./"
 
 export const checkingAuthentication = (email, password) => {
     return async(dispatch) => {
@@ -47,7 +47,11 @@ export const startRegister = (dataRegister) => {
 export const chekcAuthToken = () => {
     return async (dispatch) => {
         const token = localStorage.getItem('token');
-        if(!token) return dispatch(logout());
+        if(!token){
+            dispatch(setResetCompleteInfo());
+            dispatch(logout());
+            return
+        }
 
         try {
             const { data } = await usuariosApi.get('renew');
@@ -62,6 +66,7 @@ export const chekcAuthToken = () => {
         } catch (error) {
             localStorage.clear();
             dispatch(logout());
+            dispatch(setResetCompleteInfo());
         }
     }
 }
@@ -81,6 +86,7 @@ export const startLogout = () => {
     localStorage.clear();
     return async (dispatch) => {
         dispatch(logout());
+        dispatch(setResetCompleteInfo());
     }
 }
 

@@ -1,4 +1,4 @@
-import { OfertantesItem } from "./Ofertantes/OfertantesItem";
+import { OfertantesItem } from "./Componentes/OfertantesItem";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOfertantes } from "../../store/auth";

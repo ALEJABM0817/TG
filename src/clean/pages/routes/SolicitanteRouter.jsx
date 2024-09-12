@@ -4,9 +4,10 @@ import { Planes } from '../Planes'
 import { Home } from '../Home'
 import { Panel } from '../admin/Panel'
 import { Ofertantes } from '../Ofertantes'
-import { OfertanteCV } from '../Ofertantes/OfertanteCV'
+import { OfertanteCV } from '../Componentes/OfertanteCV'
+import { MisDatos } from '../Componentes/MisDatos'
 
-export const OfertantesRouter = () => {
+export const SolicitanteRouter = () => {
     return (
         <>
             <Navbar />
@@ -15,6 +16,7 @@ export const OfertantesRouter = () => {
                 <Route path="/Ofertantes" element={<Ofertantes />} />
                 <Route path="/Ofertantes/:id" element={<OfertanteCV />} />
                 <Route path="/panel" element={<Panel />} />
+                <Route path="/panel/mis-datos" element={<MisDatos />} />
                 <Route path="/" element={<Home />} exac />
                 <Route path="/*" element={<Navigate to="/panel" replace />} />
             </Routes>

@@ -1,77 +1,104 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../store/auth";
 
 export const Navbar = () => {
-    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-    const { status, displayName } = useSelector(state => state.auth)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { status, displayName } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+    const dropdownRef = useRef(null);
 
-    const handleNavCollapse = () => {
-        setIsNavCollapsed(!isNavCollapsed);
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
     };
-    return (
-        <nav className="navbar navbar-expand-lg navbar-dark p-2">
-            <div className="container-fluid">
-                <Link className="navbar-brand" to="/">
-                    Home Helpers CO
-                </Link>
-                <button
-                    className="custom-toggler navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarsExample09"
-                    aria-controls="navbarsExample09"
-                    aria-expanded={!isNavCollapsed ? true : false}
-                    aria-label="Toggle navigation"
-                    onClick={handleNavCollapse}
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
-                    id="navbarSupportedContent"
-                >
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsDropdownOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        if (isDropdownOpen) {
+            document.addEventListener('click', handleClickOutside);
+        } else {
+            document.removeEventListener('click', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isDropdownOpen]);
+
+    return (
+        <nav className="navbar">
+            <div className="navbar-container">
+                <div className="content-left">
+                    <Link className="navbar-brand" to="/">
+                        Home Helpers CO
+                    </Link>
+
+                    <div className="navbar-links">
                         <NavLink
-                            className={({ isActive }) =>
-                                `nav-link ${isActive ? "active" : ""}`
-                            }
                             to="/Ofertantes"
+                            className={({ isActive }) => (isActive ? 'nav-link active-link' : 'nav-link')}
                         >
                             Ofertantes
                         </NavLink>
                         <NavLink
-                            className={({ isActive }) =>
-                                `nav-link ${isActive ? "active" : ""}`
-                            }
                             to="/Planes"
+                            className={({ isActive }) => (isActive ? 'nav-link active-link' : 'nav-link')}
                         >
                             Planes
                         </NavLink>
-                    </ul>
+                    </div>
                 </div>
-            </div>
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
-                <ul className="navbar-nav ml-auto">
-                    {
-                        status === 'authenticated' 
-                            ? <div className="header-container-right">
-                                <span>Hola! {displayName}</span>
-                                <button onClick={() => dispatch(startLogout())} className="nav-item nav-link btn">Cerrar Sesión</button>
-                                </div>
-                            : <NavLink
-                                className={({ isActive }) =>
-                                    `nav-link ${isActive ? "active" : ""}`
-                                }
-                                to="/Login"
+
+                <div className="navbar-user" ref={dropdownRef}>
+                    {status === 'authenticated'
+                        ? (
+                            <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+                                <button
+                                    className="user-menu"
+                                    type="button"
+                                    onClick={toggleDropdown}
                                 >
+                                    <FaUserCircle size={24} /> Hola, {displayName}
+                                    <span className={`arrow ${isDropdownOpen ? 'open' : ''}`}></span>
+                                </button>
+                                <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
+                                    <li className="mobile-only">
+                                        <NavLink
+                                            to="/Ofertantes"
+                                            className={({ isActive }) => (isActive ? 'nav-link active-link' : 'nav-link')}
+                                        >
+                                            Ofertantes
+                                        </NavLink>
+                                    </li>
+                                    <li className="mobile-only">
+                                        <NavLink
+                                            to="/Planes"
+                                            className={({ isActive }) => (isActive ? 'nav-link active-link' : 'nav-link')}
+                                        >
+                                            Planes
+                                        </NavLink>
+                                    </li>
+                                    <li><NavLink to="/panel/mis-datos">Mis datos</NavLink></li>
+                                    <li><NavLink to="/experiencia">Experiencia</NavLink></li>
+                                    <li><NavLink to="/solicitudes">Solicitudes</NavLink></li>
+                                    <li><button onClick={() => dispatch(startLogout())}>Cerrar Sesión</button></li>
+                                </ul>
+                            </div>
+                        )
+                        : (
+                            <NavLink to="/Login">
                                 Iniciar Sesión
-                                </NavLink>
+                            </NavLink>
+                        )
                     }
-                </ul>
+                </div>
             </div>
         </nav>
     );
