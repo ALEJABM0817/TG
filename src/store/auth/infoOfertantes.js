@@ -8,7 +8,6 @@ export const infoOfertantes = createSlice({
   }, 
   reducers: {
     setOfertantes: (state, { payload }) => {
-      console.log(payload)
         state.ofertantes = payload;
     },
     setOfertanteCV: (state, { payload }) => {

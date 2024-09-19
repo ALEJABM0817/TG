@@ -116,7 +116,8 @@ $error-color: #e74c3c;
   }
 
   .add-button,
-  .submit-button {
+  .submit-button,
+  .next-button {
     background-color: $button-bg-color;
     color: $button-text-color;
     padding: $button-padding;
@@ -136,3 +137,75 @@ $error-color: #e74c3c;
     }
   }
 }
+
+.step2-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 25px auto;
+  
+  h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+  }
+
+  .tarifas-container {
+      .tarifa-item {
+          margin-bottom: 15px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+
+          input {
+              width: 45%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+          }
+
+          button {
+              background-color: #ff4d4d;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              padding: 10px;
+              cursor: pointer;
+
+              &:hover {
+                  background-color: #ff3333;
+              }
+          }
+
+          .error {
+              color: red;
+              font-size: 0.9rem;
+              margin-top: 5px;
+          }
+      }
+  }
+
+  .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .prev-btn, .submit-btn {
+          background-color: #007bff;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+
+          &:hover {
+              background-color: #0056b3;
+          }
+      }
+  }
+}
+

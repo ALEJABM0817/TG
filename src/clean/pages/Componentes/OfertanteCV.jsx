@@ -34,6 +34,7 @@ export const OfertanteCV = () => {
                     <div className="cv-header">
                         <img src={'http://localhost:4000/uploads/' + ofertanteCV.photo} alt="Imagen del ofertante" className="cv-image" />
                     </div>
+                    <h2 className="cv-name">{ofertanteCV.nombre}</h2>
                     {ofertanteCV?.hasExperience ? (ofertanteCV.experiences?.map((item, index) => (
                         <div key={index} className="cv-content">
                             <div className="cv-body">

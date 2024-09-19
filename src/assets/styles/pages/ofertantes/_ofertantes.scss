@@ -1,0 +1,125 @@
+.ofertantes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .ofertantes-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        margin: auto;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        min-width: 250px;
+    
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+    
+        .ofertantes-image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+            height: 150px;
+            width: 150px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+    
+            .ofertantes-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    
+        .ofertantes-details {
+            text-align: center;
+    
+            .ofertantes-title {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                color: #333;
+            }
+        }
+    
+        .ofertantes-areas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 15px;
+    
+            .ofertantes-area {
+                background-color: #e0e7ff;
+                color: #1e3a8a;
+                padding: 5px 10px;
+                border-radius: 15px;
+                margin: 5px;
+                font-size: 0.9rem;
+            }
+    
+            &+div {
+                justify-content: center;
+            }
+        }
+    
+        .stars-container {
+            margin-bottom: 15px;
+        }
+    
+        .ofertantes-button {
+            background-color: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+                background-color: #1d4ed8;
+            }
+        }
+    }
+}
+
+.servicios {
+    padding: 2rem;
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .filters {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+
+        label {
+            margin-right: 1.5rem;
+            font-size: 1rem;
+            input {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .ofertantes-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        justify-items: center;
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #999;
+    }
+}
+

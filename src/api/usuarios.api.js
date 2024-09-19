@@ -29,4 +29,8 @@ export const getUserData = async (cedula) =>
         }
     });
 
+export const updateUserData = async (uid, usuario) =>
+    await usuariosApi.put(`/user/${uid}`, usuario);
+
+
 export default usuariosApi;

@@ -6,6 +6,7 @@ import { Panel } from '../admin/Panel'
 import { Ofertantes } from '../Ofertantes'
 import { OfertanteCV } from '../Componentes/OfertanteCV'
 import { MisDatos } from '../Componentes/MisDatos'
+import { MisDatosEdit } from '../Componentes/MisDatosEdit'
 
 export const SolicitanteRouter = () => {
     return (
@@ -17,6 +18,7 @@ export const SolicitanteRouter = () => {
                 <Route path="/Ofertantes/:id" element={<OfertanteCV />} />
                 <Route path="/panel" element={<Panel />} />
                 <Route path="/panel/mis-datos" element={<MisDatos />} />
+                <Route path="/panel/mis-datos/edit" element={<MisDatosEdit />} />
                 <Route path="/" element={<Home />} exac />
                 <Route path="/*" element={<Navigate to="/panel" replace />} />
             </Routes>

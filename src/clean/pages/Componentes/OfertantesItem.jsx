@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const OfertantesItem = ({ imgSrc, areas, id}) => {
     const [showPopup, setShowPopup] = useState(false);
-    const { status } = useSelector(state => state.auth);
+    const { status, typeUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
     const ratingChanged = (newRating) => {
         console.log(newRating);
@@ -41,7 +41,12 @@ export const OfertantesItem = ({ imgSrc, areas, id}) => {
                         activeColor="#ffd700"
                         classNames="stars-container"
                     />
-                    <input className="ofertantes-button" type="submit" value="Contratar" onClick={handleContractClick} />
+
+                    {
+                        (typeUser == 'solicitante' || typeUser == null) && (
+                            <input className="ofertantes-button" type="submit" value="Contratar" onClick={handleContractClick} />
+                        )
+                    }
                 </div>
 
 
