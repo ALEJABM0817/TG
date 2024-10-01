@@ -7,6 +7,8 @@ import { Ofertantes } from '../Ofertantes'
 import { OfertanteCV } from '../Componentes/OfertanteCV'
 import { MisDatos } from '../Componentes/MisDatos'
 import { MisDatosEdit } from '../Componentes/MisDatosEdit'
+import { TarifasEdit } from '../Componentes/TarifasEdit'
+import { Services } from '../Componentes/Services'
 
 export const SolicitanteRouter = () => {
     return (
@@ -19,6 +21,8 @@ export const SolicitanteRouter = () => {
                 <Route path="/panel" element={<Panel />} />
                 <Route path="/panel/mis-datos" element={<MisDatos />} />
                 <Route path="/panel/mis-datos/edit" element={<MisDatosEdit />} />
+                <Route path="/panel/mis-datos/tarifas-edit" element={<TarifasEdit />} />
+                <Route path='/solicitudes' element={<Services />} />
                 <Route path="/" element={<Home />} exac />
                 <Route path="/*" element={<Navigate to="/panel" replace />} />
             </Routes>

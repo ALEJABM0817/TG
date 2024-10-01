@@ -32,5 +32,25 @@ export const getUserData = async (cedula) =>
 export const updateUserData = async (uid, usuario) =>
     await usuariosApi.put(`/user/${uid}`, usuario);
 
+export const getTarifas = async (cedula) =>
+    await usuariosApi.get("/tarifas", {
+        headers: {
+            'cedula': cedula
+        }
+    });
+
+export const updateTarifas = async (uid, tarifas) =>
+    await usuariosApi.put(`/tarifas-update/${uid}`, tarifas);
+
+export const createService = async (service) => 
+    await usuariosApi.post('/service', service);
+
+export const getServices = async (cedula, typeUser) =>
+    await usuariosApi.get("/get-services", {
+        headers: {
+            'cedula': cedula,
+            'typeUser': typeUser
+        }
+    });
 
 export default usuariosApi;
