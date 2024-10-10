@@ -29,6 +29,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         const fetchServices = async () => {
             const { data } = await getServices(idOfertante, 'ofertante');
             const servicesArray = Array.isArray(data) ? data : [data];
+            console.log(servicesArray)
             setServices(servicesArray);
         };
 
@@ -81,7 +82,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
     
             const selectedService = servicios.find(service => service.servicio === value);
             updatedServices[index]['precio'] = selectedService.tipos_tarifas[0].precio;
-            updatedServices[index]['servicio_id'] = selectedService.id;
+            updatedServices[index]['servicio_id'] = selectedService.servicio_id;
             updatedServices[index]['tipo_tarifa_id'] = selectedService.tipos_tarifas[0].tipo_tarifa_id;
     
         
@@ -136,12 +137,12 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
             }
         });
 
-        for (const fecha in jornadaCompletaPorFecha) {
-            if (mediaJornadasPorFecha[fecha] > 0) {
-                setError('No puede mezclar jornadas completas y medias jornadas en el mismo día.');
-                return false;
-            }
-        }
+        // for (const fecha in jornadaCompletaPorFecha) {
+        //     if (mediaJornadasPorFecha[fecha] > 0) {
+        //         setError('No puede mezclar jornadas completas y medias jornadas en el mismo día.');
+        //         return false;
+        //     }
+        // }
 
         for (const fecha in mediaJornadasPorFecha) {
             if (mediaJornadasPorFecha[fecha] > 2) {
