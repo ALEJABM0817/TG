@@ -22,7 +22,7 @@ export const SolicitanteRouter = () => {
                 <Route path="/panel/mis-datos" element={<MisDatos />} />
                 <Route path="/panel/mis-datos/edit" element={<MisDatosEdit />} />
                 <Route path="/panel/mis-datos/tarifas-edit" element={<TarifasEdit />} />
-                <Route path='/solicitudes' element={<Services />} />
+                <Route path='/panel/solicitudes' element={<Services />} />
                 <Route path="/" element={<Home />} exac />
                 <Route path="/*" element={<Navigate to="/panel" replace />} />
             </Routes>

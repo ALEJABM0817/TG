@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../store/auth";
 
 export const Navbar = () => {
+    const { typeUser } = useSelector((state) => state.auth);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { status, displayName } = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -86,8 +87,11 @@ export const Navbar = () => {
                                         </NavLink>
                                     </li>
                                     <li><NavLink to="/panel/mis-datos">Mis datos</NavLink></li>
-                                    <li><NavLink to="/experiencia">Experiencia</NavLink></li>
-                                    <li><NavLink to="/solicitudes">Solicitudes</NavLink></li>
+                                    {typeUser === 'ofertante'
+                                        ? <li><NavLink to="/panel/experiencia">Experiencia</NavLink></li>
+                                        : null
+                                    }
+                                    <li><NavLink to="/panel/solicitudes">Solicitudes</NavLink></li>
                                     <li><button onClick={() => dispatch(startLogout())}>Cerrar Sesión</button></li>
                                 </ul>
                             </div>

@@ -6,6 +6,12 @@ export const Services = () => {
     const { uid, typeUser } = useSelector((state) => state.auth);
     const [services, setServices] = useState([]);
 
+    const servicioDisplayMapping = {
+        media_jornada: 'Media jornada',
+        jornada_completa: 'Jornada completa',
+      };
+    
+
     useEffect(() => {
         const fetchServices = async () => {
             const { data } = await getServices(uid, typeUser);
@@ -27,13 +33,16 @@ export const Services = () => {
                         <div key={index} className="service-card">
                             <h2 className="service-name">{service.servicio}</h2>
                             <div className="service-details">
-                                <p><strong>Nombre:</strong> {service.nombre}</p>
+                                <p><strong>Nombre del {typeUser == 'solicitante' ? 'cotratista' : 'solicitante'}:</strong> {service.nombre}</p>
                                 <p><strong>Teléfono:</strong> {service.telefono}</p>
-                                <p><strong>Tipo de Jornada:</strong> {service.tipo_tarifa}</p>
+                                <p><strong>Tipo de Jornada:</strong> {servicioDisplayMapping[service.tipo_tarifa]}</p>
                             </div>
                             <div className="service-footer">
-                                <p className="service-date"><strong>Fecha:</strong> {new Date(service.fecha).toLocaleDateString()}</p>
-                                <p className="service-price"><strong>Precio:</strong> ${service.precio}</p>
+                            <p className="service-date">
+                            <strong>Fecha: </strong> 
+                            {service.fechas.map((date, index) => new Date(date.fecha).toLocaleDateString()).join(', ')}
+                            </p>
+                                <p className="service-price"><strong>Precio por jornada:</strong> ${service.precio}</p>
                             </div>
                         </div>
                     ))}

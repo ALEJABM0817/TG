@@ -48,19 +48,19 @@ export const OfertanteCV = () => {
                     <div className='container-cv-content'>
                         <div className="cv-main-content">
                             <div className="cv-left">
-                                <h3>Experiencia</h3>
-                                {ofertanteCV?.hasExperience ? (ofertanteCV.experiences?.map((item, index) => (
-                                    <div key={index} className="cv-content">
-                                        <h4>Experiencia {index + 1}</h4>
-                                        <div className="cv-body">
-                                            <p><strong>Ocupación:</strong> {item.title}</p>
-                                            <p><strong>Compañía:</strong> {item.company}</p>
-                                            <p><strong>Responsabilidades:</strong> {item.responsibilities}</p>
-                                            <p><strong>Inicio:</strong> {new Date(item.startDate).toLocaleDateString()}</p>
-                                            <p><strong>Fin:</strong> {item.isCurrent ? 'Actualmente trabajando' : new Date(item.endDate).toLocaleDateString()}</p>
-                                        </div>
+                            <h3>Experiencia</h3>
+                            {ofertanteCV?.hasExperience ? (ofertanteCV.experiences?.map((item, index) => (
+                                <div key={index} className="cv-content">
+                                    <h4>Experiencia {index + 1}</h4>
+                                    <div className="cv-body">
+                                        <p><strong>Ocupación:</strong> {item.title}</p>
+                                        <p><strong>Compañía:</strong> {item.company}</p>
+                                        <p><strong>Responsabilidades:</strong> {item.responsibilities}</p>
+                                        <p><strong>Inicio:</strong> {new Date(item.startDate).toLocaleDateString()}</p>
+                                        <p><strong>Fin:</strong> {item.isCurrent ? 'Actualmente trabajando' : new Date(item.endDate).toLocaleDateString()}</p>
                                     </div>
-                                ))) : <p>Sin Experiencia</p>}
+                                </div>
+                            ))) : <p>Sin Experiencia</p>}
                             </div>
                             <div className="cv-right">
                                 <h3>Servicios</h3>
