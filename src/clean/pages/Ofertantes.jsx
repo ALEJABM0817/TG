@@ -81,6 +81,7 @@ export const Ofertantes = () => {
                             imgSrc={oferService.photo}
                             areas={oferService.areas}
                             id={oferService.cedula}
+                            promedio={oferService.promedio_calificacion}
                         />
                     ))
                 ) : (

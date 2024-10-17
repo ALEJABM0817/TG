@@ -3,13 +3,11 @@ import ReactStars from "react-rating-stars-component";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-export const OfertantesItem = ({ imgSrc, areas, id}) => {
+export const OfertantesItem = ({ imgSrc, areas, id, promedio}) => {
     const [showPopup, setShowPopup] = useState(false);
     const { status, typeUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
-    const ratingChanged = (newRating) => {
-        console.log(newRating);
-    };
+    
 
     const handleContractClick = () => {
         if (status !== 'authenticated') {
@@ -34,13 +32,23 @@ export const OfertantesItem = ({ imgSrc, areas, id}) => {
                             <span key={index} className="ofertantes-area">{area}</span>
                         ))}
                     </div>
-                    <ReactStars
-                        count={5}
-                        onChange={ratingChanged}
-                        size={24}
-                        activeColor="#ffd700"
-                        classNames="stars-container"
-                    />
+                    {
+                        promedio ? <ReactStars
+                            count={5}
+                            value={ promedio }
+                            size={24}
+                            edit={false}
+                            activeColor="#ffd700"
+                            classNames="stars-container"
+                            isHalf={true}
+                        />
+
+                        : <p style={{
+                            margin: '0',
+                            padding: '0',
+                            height: '50px',
+                        }}>Sin calificaciones</p>
+                    }
 
                     {
                         (typeUser == 'solicitante' || typeUser == null) && (

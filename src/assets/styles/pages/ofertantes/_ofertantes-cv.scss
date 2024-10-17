@@ -59,10 +59,15 @@
     justify-content: space-between;
     gap: 30px;
     flex: 1;
+    flex-wrap: wrap;
 
     .cv-left,
     .cv-right {
-        width: 48%;
+        width: 47%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 }
 
@@ -150,6 +155,15 @@
             grid-template-columns: 1fr;
         }
     }
+    
+    .textarea-service {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
 
     select,
     input[type="date"] {
@@ -182,6 +196,7 @@
         color: #fff;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        max-height: 55px;
 
         &:hover {
             background-color: #2e59d9;
@@ -210,23 +225,21 @@
     .error-message {
         color: red;
         font-size: 0.9rem;
-        margin-bottom: 15px;
+        margin: 15px 0;
     }
 
     .total {
         font-size: 1.4rem;
         font-weight: bold;
-        margin: 40px 0 20px 0;
+        margin: 20px 0 20px 0;
         color: #333;
         text-align: right;
     }
 
     .button-send {
         bottom: 25px;
-        position: absolute;
         max-width: 450px;
         left: 25px;
-        width: calc(100% - 50px);
     }
 
     @media (max-width: 768px) {
