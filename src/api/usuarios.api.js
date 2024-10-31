@@ -7,17 +7,23 @@ const usuariosApi = axios.create({
     baseURL: VITE_API_URL
 });
 
-usuariosApi.interceptors.request.use( config => {
+usuariosApi.interceptors.request.use(config => {
     config.headers = {
         ...config.headers,
         'x-token': localStorage.getItem('token')
     }
-    
+
     return config;
 })
 
 export const createUsuario = async (usuario) =>
     await usuariosApi.post("/user", usuario);
+
+export const getUsuarios = async () =>
+    await usuariosApi.get("/users");
+
+export const toggleUsuarioHabilitado = async (cedula, habilitado) =>
+    await usuariosApi.put(`/toggle-users/`, { cedula, habilitado: !habilitado });
 
 export const completeInfo = async (usuarioInfo) =>
     await usuariosApi.post("/upload-data", usuarioInfo);
@@ -42,7 +48,7 @@ export const getTarifas = async (cedula) =>
 export const updateTarifas = async (uid, tarifas) =>
     await usuariosApi.put(`/tarifas-update/${uid}`, tarifas);
 
-export const createService = async (service) => 
+export const createService = async (service) =>
     await usuariosApi.post('/service', service);
 
 export const getServices = async (cedula, typeUser) =>

@@ -13,12 +13,12 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         width: 100%;
         min-width: 250px;
-    
+
         &:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
         }
-    
+
         .ofertantes-image-container {
             display: flex;
             justify-content: center;
@@ -28,30 +28,30 @@
             overflow: hidden;
             border-radius: 10px;
             margin: 0 auto 15px;
-    
+
             .ofertantes-image {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
         }
-    
+
         .ofertantes-details {
             text-align: center;
-    
+
             .ofertantes-title {
                 font-size: 1.5rem;
                 margin-bottom: 10px;
                 color: #333;
             }
         }
-    
+
         .ofertantes-areas {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             margin-bottom: 15px;
-    
+
             .ofertantes-area {
                 background-color: #e0e7ff;
                 color: #1e3a8a;
@@ -60,16 +60,16 @@
                 margin: 5px;
                 font-size: 0.9rem;
             }
-    
+
             &+div {
                 justify-content: center;
             }
         }
-    
+
         .stars-container {
             margin-bottom: 14px;
         }
-    
+
         .ofertantes-button {
             background-color: #2563eb;
             color: white;
@@ -79,7 +79,7 @@
             cursor: pointer;
             font-size: 1rem;
             transition: background-color 0.3s ease;
-    
+
             &:hover {
                 background-color: #1d4ed8;
             }
@@ -89,7 +89,7 @@
 
 .servicios {
     padding: 2rem;
-    
+
     h2 {
         text-align: center;
         margin-bottom: 1.5rem;
@@ -97,12 +97,14 @@
 
     .filters {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         margin-bottom: 2rem;
+        gap: 5px 15px;
 
         label {
-            margin-right: 1.5rem;
-            font-size: 1rem;
+            font-size: 24px;
+
             input {
                 margin-right: 0.5rem;
             }
@@ -122,4 +124,3 @@
         color: #999;
     }
 }
-

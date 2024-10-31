@@ -6,6 +6,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Modal from 'react-modal';
+import { toast } from 'react-toastify';
 
 const localizer = momentLocalizer(moment);
 
@@ -22,6 +23,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
     const { uid } = useSelector((state) => state.auth);
     const navigate = useNavigate();
     const [services, setServices] = useState([]);
+    const [warning, setWarning] = useState('');
 
     useEffect(() => {
         validateAllServices();
@@ -29,7 +31,6 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         const fetchServices = async () => {
             const { data } = await getServices(idOfertante, 'ofertante');
             const servicesArray = Array.isArray(data) ? data : [data];
-            console.log(servicesArray)
             setServices(servicesArray);
         };
 
@@ -42,17 +43,17 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         }, 0);
     };
 
-    const CustomDay = (date ) => {
+    const CustomDay = (date) => {
         const dateStr = date.toISOString().split('T')[0];
-    
-        const isDateOccupied = services.some(service => 
+
+        const isDateOccupied = services.some(service =>
             service.fechas.some(fecha => fecha.fecha === dateStr)
         );
-    
+
         if (isDateOccupied) {
             return {
                 style: {
-                    backgroundColor: '#f8d7da',
+                    backgroundColor: '#9e9e9e',
                     color: '#721c24',
                     borderColor: '#f5c6cb',
                     borderRadius: '3px',
@@ -69,37 +70,35 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
 
     const handleServiceChange = (index, field, value) => {
         const updatedServices = [...selectedServices];
-    
+
         updatedServices[index][field] = value;
-    
+        updatedServices[index]['fechas'] = [];
+
         if (field === 'servicio') {
             const isAlreadySelected = selectedServices.some(
                 (service, idx) => service.servicio === value && idx !== index
             );
             if (isAlreadySelected) {
-                alert('Este servicio ya ha sido seleccionado en otro campo. Por favor, elija uno diferente.');
+                toast.info('Este servicio ya ha sido seleccionado en otro campo. Por favor, elija uno diferente.');
                 return;
             }
-    
+
             const selectedService = servicios.find(service => service.servicio === value);
             updatedServices[index]['precio'] = selectedService.tipos_tarifas[0].precio;
             updatedServices[index]['servicio_id'] = selectedService.servicio_id;
             updatedServices[index]['tipo_tarifa_id'] = selectedService.tipos_tarifas[0].tipo_tarifa_id;
-    
-        
-            updatedServices[index]['fechas'] = [];
         }
-    
+
         if (field === 'tipo_tarifa') {
             const selectedService = servicios.find(service => service.servicio === updatedServices[index].servicio);
             const tarifaSeleccionada = selectedService.tipos_tarifas.find(tarifa => tarifa.tipo_tarifa === value);
-    
+
             updatedServices[index]['precio'] = tarifaSeleccionada.precio;
         }
-    
+
         setSelectedServices(updatedServices);
     };
-    
+
 
     const handlePlanChange = (index, value) => {
         const updatedServices = [...selectedServices];
@@ -118,7 +117,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         const updatedServices = [...selectedServices];
         updatedServices[index]['comentario'] = comentario;
         setSelectedServices(updatedServices);
-      };
+    };
 
     const validateAllServices = () => {
         setError('');
@@ -127,22 +126,22 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         const mediaJornadasPorFecha = {};
 
         selectedServices.forEach(service => {
-        
+
             if (service.fechas.length !== service.plan) {
-              setError(`Debe seleccionar ${service.plan} ${service.plan == 1 ? 'fecha' : 'fechas'} para el servicio ${service.servicio}.`);
-              return false;
+                setError(`Debe seleccionar ${service.plan} ${service.plan == 1 ? 'fecha' : 'fechas'} para el servicio de ${service.servicio}.`);
+                return false;
             }
-          
+
             if (service.tipo_tarifa === 'jornada_completa') {
-              service.fechas.forEach(fecha => {
-                jornadaCompletaPorFecha[fecha.fecha] = true;
-              });
+                service.fechas.forEach(fecha => {
+                    jornadaCompletaPorFecha[fecha.fecha] = true;
+                });
             } else if (service.tipo_tarifa === 'media_jornada') {
-              service.fechas.forEach(fecha => {
-                mediaJornadasPorFecha[fecha.fecha] = (mediaJornadasPorFecha[fecha.fecha] || 0) + 1;
-              });
+                service.fechas.forEach(fecha => {
+                    mediaJornadasPorFecha[fecha.fecha] = (mediaJornadasPorFecha[fecha.fecha] || 0) + 1;
+                });
             }
-          });
+        });
 
         // for (const fecha in jornadaCompletaPorFecha) {
         //     if (mediaJornadasPorFecha[fecha] > 0) {
@@ -173,12 +172,14 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
             await createService(selectedServices);
             navigate('/panel');
         }
-        alert('Servicio contratado con éxito');
+        toast.info('Servicio contratado con éxito');
     };
 
     const handleSelectDates = (index) => {
         setCurrentServiceIndex(index);
         setShowCalendar(true);
+        const fechasFaltantes = selectedServices[index].plan - selectedServices[index].fechas.length;
+        fechasFaltantes ? setWarning(`Te faltan por seleccionar ${fechasFaltantes} fecha(s).`) : setWarning('Ya seleccionaste todas las fechas para el plan seleccionado.')
     };
 
     const isDateAvailable = (fecha) => {
@@ -193,63 +194,63 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         const selectedService = selectedServices[currentServiceIndex];
 
         if (moment(fechaSinHora).isBefore(moment().format('YYYY-MM-DD'))) {
-            alert('No puede seleccionar una fecha anterior a la actual.');
+            toast.info('No puede seleccionar una fecha anterior a la actual.');
             return;
         }
-        
-        const isDateOccupied = services.some(service => 
+
+        const isDateOccupied = services.some(service =>
             service.fechas.some(fecha => fecha.fecha.split(" ")[0] === fechaSinHora) // compara solo la parte de la fecha
         );
-        
+
         if (isDateOccupied) {
-        alert('No puede seleccionar esta fecha, ya esta ocupada para otro servicio.');
-        return;
-        }
-    
-        if (selectedService.fechas.length >= selectedService.plan) {
-            alert('Ya ha seleccionado la cantidad máxima de fechas para este plan.');
+            toast.info('No puede seleccionar esta fecha, ya esta ocupada para otro servicio.');
             return;
         }
-    
-        const isFullDaySelected = selectedServices.some(s => 
+
+        if (selectedService.fechas.length >= selectedService.plan) {
+            toast.info('Ya ha seleccionado la cantidad máxima de fechas para este plan.');
+            return;
+        }
+
+        const isFullDaySelected = selectedServices.some(s =>
             s.fechas.includes(fecha.split(' ')[0]) && s.tipo_tarifa === 'jornada_completa'
         );
-    
+
         if (isFullDaySelected) {
-            alert('No puede seleccionar una media jornada en un día que ya tiene una jornada completa.');
+            toast.info('No puede seleccionar una media jornada en un día que ya tiene una jornada completa.');
             return;
         }
-    
-    
-        const isHalfDaySelected = selectedServices.some(s => 
+
+
+        const isHalfDaySelected = selectedServices.some(s =>
             s.fechas.some(f => typeof f === 'string' && f.split(' ')[0] === fecha.split(' ')[0] && s.tipo_tarifa === 'media_jornada')
         );
-    
+
         if (isHalfDaySelected && selectedService.tipo_tarifa === 'jornada_completa') {
-            alert('No puede seleccionar una jornada completa en un día que ya tiene una media jornada.');
+            toast.info('No puede seleccionar una jornada completa en un día que ya tiene una media jornada.');
             return;
         }
-    
+
         if (selectedService.tipo_tarifa === 'media_jornada') {
             if (!isDateAvailable(fecha)) {
-                alert('Ya ha seleccionado esta fecha para una media jornada en la mañana.');
+                toast.info('Ya ha seleccionado esta fecha para una media jornada en la mañana.');
                 return;
             }
             setShowTimeSelection(true);
         } else if (selectedService.tipo_tarifa === 'jornada_completa') {
-        
+
             const isDateSelected = selectedServices.some(s => s.fechas.includes(fecha));
             if (isDateSelected) {
-                alert('No puede seleccionar más de dos medias jornadas para el mismo día y horario.');
+                toast.info('No puede seleccionar más de dos medias jornadas para el mismo día y horario.');
                 return;
             }
             addDateToService(fecha, 'completo');
             setShowCalendar(false);
         } else {
-        
+
             const isDateSelected = selectedServices.some(s => s.fechas.includes(fecha));
             if (isDateSelected) {
-                alert('No puede seleccionar más de dos medias jornadas para el mismo día y horario.');
+                toast.info('No puede seleccionar más de dos medias jornadas para el mismo día y horario.');
                 return;
             }
             addDateToService(fecha);
@@ -260,23 +261,23 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
     const addDateToService = (fecha, turno) => {
         const updatedServices = [...selectedServices];
         const service = updatedServices[currentServiceIndex];
-    
+
         const isDateSelected = service.fechas.some(f => f.fecha === fecha && f.turno === turno);
         if (isDateSelected) {
-            alert('Ya ha seleccionado esta fecha y turno.');
+            toast.info('Ya ha seleccionado esta fecha y turno.');
             return;
         }
 
         if (turno === 'completo') {
-            const isDateSelectedForHalfDay = selectedServices.some(s => 
+            const isDateSelectedForHalfDay = selectedServices.some(s =>
                 s.fechas.some(f => f.fecha.includes(fecha.split(' ')[0]) && f.turno !== 'completo')
             );
             if (isDateSelectedForHalfDay) {
-                alert('No puede seleccionar una jornada completa en un día que ya tiene una media jornada.');
+                toast.info('No puede seleccionar una jornada completa en un día que ya tiene una media jornada.');
                 return;
             }
         }
-    
+
         service.fechas.push({ fecha, turno });
         setSelectedServices(updatedServices);
     };
@@ -320,7 +321,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
                         <option value="">Seleccionar tipo de jornada</option>
                         {servicios.find(s => s.servicio === selectedService.servicio)?.tipos_tarifas.map(tarifa => (
                             <option key={tarifa.tipo_tarifa_id} value={tarifa.tipo_tarifa}>
-                            {tarifa.label} - {tarifa.precio}
+                                {tarifa.label} - {tarifa.precio}
                             </option>
                         ))}
                     </select>
@@ -346,16 +347,16 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
 
                     <textarea
                         className="textarea-service"
-                        placeholder="Agrega una nota. Ej: recoger las hojas del patio" 
+                        placeholder="Agrega una nota. Ej: recoger las hojas del patio"
                         value={selectedService.comentario}
                         onChange={(e) => handleCommentChange(index, e.target.value)}
                     />
                     <button className='eliminar-btn' onClick={() => handleRemoveService(index)}>Eliminar servicio</button>
-                    
+
                 </div>
             ))}
 
-            
+
             <button onClick={handleAddService}>Agregar servicio</button>
             {error && <p className="error-message">{error}</p>}
 
@@ -363,10 +364,11 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
 
             {
                 !!selectedServices.length && <button className='button-send' onClick={validateAndSubmit}>Enviar</button>
-            }            
+            }
 
-            <Modal isOpen={showCalendar} onRequestClose={() => setShowCalendar(false)}>
-                <h2>Selecciona una fecha</h2>
+            <Modal className='open-calendar' isOpen={showCalendar} onRequestClose={() => setShowCalendar(false)}>
+                <h1>Selecciona una fecha</h1>
+                {warning && <h2 className="error-message">{warning}</h2>}
                 <Calendar
                     localizer={localizer}
                     events={[]}
@@ -378,14 +380,16 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
                     views={['month']}
                     dayPropGetter={CustomDay}
                 />
-                <button onClick={() => setShowCalendar(false)}>Cerrar</button>
+                <button className='close-modal button' onClick={() => setShowCalendar(false)}>Cerrar</button>
             </Modal>
 
-            <Modal isOpen={showTimeSelection} onRequestClose={() => setShowTimeSelection(false)}>
+            <Modal className='open-calendar' isOpen={showTimeSelection} onRequestClose={() => setShowTimeSelection(false)}>
                 <h2>Selecciona un tiempo para media jornada</h2>
-                <button onClick={addMorningDate}>08:00</button>
-                <button onClick={addAfternoonDate}>14:00</button>
-                <button onClick={() => setShowTimeSelection(false)}>Cerrar</button>
+                <div className='container-buttons'>
+                    <button className='button' onClick={addMorningDate}>En la mañana: 08:00 AM</button>
+                    <button className='button' onClick={addAfternoonDate}>En la tarde: 14:00 PM</button>
+                    <button className='close-modal button' onClick={() => setShowTimeSelection(false)}>Cerrar</button>
+                </div>
             </Modal>
         </div>
     );

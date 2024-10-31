@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
@@ -74,15 +74,17 @@
     color: #333;
     gap: 15px;
 
-    .service-date, .service-price {
+    .service-date,
+    .service-price {
         font-weight: bold;
     }
 }
 
-.rating-button {
+.rating-button,
+.map-button {
     background-color: #4e73df;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -90,9 +92,9 @@
     margin: 4px 2px;
     cursor: pointer;
     border: unset;
-  }
-  
-  .rating-modal {
+}
+
+.rating-modal {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,24 +105,24 @@
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-  }
-  
-  .rating-title {
+}
+
+.rating-title {
     font-size: 24px;
     margin-bottom: 20px;
-  }
-  
-  .rating-stars {
+}
+
+.rating-stars {
     margin-bottom: 20px;
-  }
-  
-  .rating-comment {
+}
+
+.rating-comment {
     width: 100%;
     height: 100px;
     margin-bottom: 20px;
-  }
-  
-  .rating-submit {
+}
+
+.rating-submit {
     background-color: #4e73df;
     color: white;
     padding: 15px 32px;
@@ -131,7 +133,93 @@
     margin: 4px 2px;
     cursor: pointer;
     border: unset;
-  }
+}
+
+.rating-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    width: 100%;
+}
+
+.map-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    flex-direction: column;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.map-container {
+    width: 800px;
+    height: 600px;
+}
+
+.map-container>div {
+    width: 800px;
+    height: 600px;
+}
+
+@media (max-width: 768px) {
+    .map-container>div {
+        width: 600px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 600px) {
+    .map-container>div {
+        width: 500px;
+        height: 700px;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container>div {
+        width: 400px;
+        height: 600px;
+    }
+}
+
+@media (max-width: 390px) {
+    .map-container>div {
+        width: 350px;
+        height: 550px;
+    }
+}
+
+@media (max-width: 360px) {
+    .map-container>div {
+        width: 320px;
+        height: 500px;
+    }
+}
 
 @media (max-width: 768px) {
     .service-card {
@@ -146,7 +234,19 @@
         font-size: 1.5rem;
     }
 
-    .service-details, .service-footer {
+    .service-details,
+    .service-footer {
         font-size: 1rem;
+    }
+
+    .map-modal {
+        max-width: 100%;
+        max-height: 100%;
+        padding: 10px;
+    }
+
+    .map-modal .map-container {
+        width: 100%;
+        height: 100%;
     }
 }
