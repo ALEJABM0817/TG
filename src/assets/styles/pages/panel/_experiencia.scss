@@ -14,9 +14,13 @@ $error-color: #e74c3c;
 
 .experience-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
     padding: $padding;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 }
 
 .experience-list {
@@ -25,12 +29,12 @@ $error-color: #e74c3c;
     padding: $padding;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
+    max-width: 500px;
 }
 
 .add-experience-form {
     flex: 1;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 500px;
     padding: $padding;
     background-color: #f9f9f9;
     border-radius: $border-radius;
@@ -85,7 +89,8 @@ $error-color: #e74c3c;
 
     .add-button,
     .submit-button,
-    .remove-button {
+    .remove-button,
+    .cancel-button {
         background-color: $button-bg-color;
         color: $button-text-color;
         padding: $button-padding;
@@ -93,17 +98,97 @@ $error-color: #e74c3c;
         border-radius: $button-border-radius;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        margin-right: 5px;
 
         &:hover {
             background-color: $button-hover-bg-color;
         }
     }
 
-    .remove-button {
+    .remove-button,
+    .cancel-button {
         background-color: #e74c3c;
+        border: 1px solid #e74c3c;
 
         &:hover {
             background-color: darken(#e74c3c, 10%);
         }
+    }
+
+    .submit-button {
+        margin-top: 20px;
+        background-color: #f1f1f1;
+        color: #0056b3;
+        border: 1px solid #0056b3;
+
+        &:hover {
+            background-color: #0056b3;
+            color: #f1f1f1;
+        }
+    }
+}
+
+.experiencia-user {
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .cv-content {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+
+        h4 {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-body {
+            padding-left: 1rem;
+
+            p {
+                font-size: 1rem;
+                color: #444;
+                margin: 0.3rem 0;
+
+                strong {
+                    color: #333;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: #0056b3;
+            background-color: #f1f1f1;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #0056b3;
+                color: #fff;
+            }
+        }
+    }
+
+    p {
+        font-size: 1rem;
+        color: #666;
     }
 }

@@ -62,4 +62,7 @@ export const getServices = async (cedula, typeUser) =>
 export const setRating = async (rating) =>
     await usuariosApi.post("/set-rating", rating);
 
+export const saveExperience = async (experiences) =>
+    await usuariosApi.post("/save-experience", {experiences});
+
 export default usuariosApi;
