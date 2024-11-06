@@ -11,6 +11,8 @@ import { Form, Formik } from "formik";
 import { useState } from "react";
 import { startRegister } from "../../store/auth";
 import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
+
 export const PersonaNatural = () => {
   const dispatch = useDispatch();
   const [imgLoad, setImgLoad] = useState(false);
@@ -37,21 +39,20 @@ export const PersonaNatural = () => {
           onSubmit={(values) => {
             const {password, password2} = values;
             const isEmpty = Object.values(values).some(x => (x === ''));
-            console.log(values)
 
             if (isEmpty) {
-                return console.log("todos los campos son obligatorios")
+                return toast.warning("Todos los campos son obligatorios.")
             }
 
             if (password !== password2) {
-                return console.log("las constraseñas no coinciden")
+                return toast.warning("Las constraseñas no coinciden.")
             }
             
             try {
                 dispatch(startRegister(values));
                 
             } catch (error) {
-                console.log(error)
+                console.log(error.response.data.message)
             }
           }}
         >

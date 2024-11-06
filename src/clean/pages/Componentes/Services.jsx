@@ -2,15 +2,41 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getServices, setRating } from '../../../api/usuarios.api';
 import ReactStars from "react-rating-stars-component";
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
+import { toast } from 'react-toastify';
+import { GoogleMap, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import { useGoogleMaps } from '../../../google-maps/GoogleMapsProvider';
+
+Modal.setAppElement('#root');
+
+const GoogleMapsLoader = ({ children }) => {
+    const { isScriptLoaded, setIsScriptLoaded } = useGoogleMaps();
+
+    useEffect(() => {
+        if (!isScriptLoaded) {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBt3i7fDx-EJGOIpOVwWdbpPIldkggetG0`;
+            script.async = true;
+            script.onload = () => setIsScriptLoaded(true);
+            document.head.appendChild(script);
+        }
+    }, [isScriptLoaded, setIsScriptLoaded]);
+
+    if (!isScriptLoaded) return <div>Loading...</div>;
+    return children;
+};
 
 export const Services = () => {
-    const { uid, typeUser } = useSelector((state) => state.auth);
+    const { uid, typeUser, direccion } = useSelector((state) => state.auth);
     const [services, setServices] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rating, setRatingState] = useState(0);
     const [comment, setComment] = useState('');
     const [ratingServiceIndex, setRatingServiceIndex] = useState(null);
+    const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+    const [selectedAddress, setSelectedAddress] = useState('');
+    const [directionsResponse, setDirectionsResponse] = useState(null);
+    const [shouldFetchDirections, setShouldFetchDirections] = useState(false);
 
     const fetchServices = async () => {
         const { data } = await getServices(uid, typeUser);
@@ -34,7 +60,7 @@ export const Services = () => {
     const handleRatingSubmit = async () => {
         try {
             if (rating === 0) {
-                alert('Por favor, selecciona una calificación antes de enviar.');
+                toast.warning('Por favor, selecciona una calificación antes de enviar.');
                 return;
             }
             const service = services[ratingServiceIndex];
@@ -50,11 +76,40 @@ export const Services = () => {
     
             await setRating(updatedService);
             fetchServices();
-            alert('Servicio calificado exitosamente.');
+            toast.success('Servicio calificado exitosamente.');
         } catch (error) {
-            console.error('Error al calificar el servicio:', error);
-            alert('Hubo un error al calificar el servicio. Por favor, inténtalo de nuevo.');
+            toast.error('Hubo un error al calificar el servicio. Por favor, inténtalo de nuevo.');
         }
+    };
+
+    const ensureAddressContainsKeywords = (address) => {
+        const lowerCaseAddress = address.toLowerCase();
+    
+        if (!lowerCaseAddress.includes("tuluá") && !lowerCaseAddress.includes("tulua")) {
+            address += ", Tuluá";
+        }
+    
+        if (!lowerCaseAddress.includes("valle")) {
+            address += ", Valle del Cauca";
+        }
+    
+        return address;
+    };
+
+    const adjustedDireccion = ensureAddressContainsKeywords(direccion);
+
+    const handleMapButtonClick = (addressMap) => {
+        const adjustedAddress = ensureAddressContainsKeywords(addressMap);
+        setSelectedAddress(adjustedAddress);
+        setIsMapModalOpen(true);
+        setShouldFetchDirections(true);
+    };
+
+    const handleCloseMapModal = () => {
+        setIsMapModalOpen(false);
+        setSelectedAddress('');
+        setDirectionsResponse(null);
+        setShouldFetchDirections(false);
     };
 
     return (
@@ -88,7 +143,14 @@ export const Services = () => {
                                 }}>Calificar servicio</button>
                             )}
 
-                            <ReactModal className="rating-modal" isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
+                            {typeUser === 'ofertante' && (
+                                <button className="map-button" onClick={() => handleMapButtonClick(service.direccion)}>
+                                    Ver dirección en el mapa
+                                </button>
+                            )}
+
+                            <Modal className="rating-modal" isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
+                                <button className="modal-close-button" onClick={() => setIsModalOpen(false)}>X</button>
                                 <h2 className="rating-title">Calificar servicio</h2>
 
                                 <ReactStars
@@ -107,11 +169,47 @@ export const Services = () => {
                                 />
 
                                 <button className="rating-submit" onClick={handleRatingSubmit}>Enviar calificación</button>
-                            </ReactModal>
+                            </Modal>
                         </div>
                     ))}
                 </div>
             )}
+
+            <Modal className="map-modal" isOpen={isMapModalOpen} onRequestClose={handleCloseMapModal}>
+                <button className="modal-close-button" onClick={handleCloseMapModal}>X</button>
+                <h2 className="map-title">Dirección en el mapa</h2>
+                <GoogleMapsLoader>
+                    <div className="map-container">
+                        <GoogleMap
+                            center={{ lat: -3.745, lng: -38.523 }}
+                            zoom={10}
+                        >
+                            {shouldFetchDirections && (
+                                <DirectionsService
+                                    options={{
+                                        origin: adjustedDireccion,
+                                        destination: selectedAddress,
+                                        travelMode: 'DRIVING'
+                                    }}
+                                    callback={(response, status) => {
+                                        if (status === 'OK') {
+                                            setDirectionsResponse(response);
+                                            setShouldFetchDirections(false);
+                                        } else {
+                                            console.error(`error fetching directions ${response}`);
+                                        }
+                                    }}
+                                />
+                            )}
+                            {directionsResponse && (
+                                <DirectionsRenderer
+                                    directions={directionsResponse}
+                                />
+                            )}
+                        </GoogleMap>
+                    </div>
+                </GoogleMapsLoader>
+            </Modal>
         </div>
     );
 };

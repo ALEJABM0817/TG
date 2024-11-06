@@ -1,2 +1,2 @@
-export * from './pages';
-export * from './routes/CleanRouter';
+export * from './CleanRouter';
+export * from './AdminRouter';

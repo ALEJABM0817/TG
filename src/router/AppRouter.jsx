@@ -7,6 +7,7 @@ import { SolicitanteRouter } from "../clean/pages/routes/SolicitanteRouter"
 import { chekcAuthToken } from "../store/auth"
 import { Loader } from "../clean/pages/Loader/Loader"
 import { OfertanteRouter } from "../clean/pages/routes/OfertanteRouter"
+import { AdminRouter } from "../clean/pages/routes"
 
 
 export const AppRouter = () => {
@@ -25,34 +26,37 @@ export const AppRouter = () => {
 
     return (
         <Routes>
-            {
-                (status === 'no-authenticated')
-                    ? (
-                        <>
-                            <Route path="/*" element={<CleanRouter />} />
-                            <Route path="/complete-info/*" element={<Navigate to="/" />} />
-                            <Route path="/panel/*" element={<Navigate to="/" />} />
-                        </>
-                    )
-
-                    : ((typeUser === 'ofertante' && completeInfo) ) ? (
-                        <>
-                            <Route path="/*" element={ <OfertanteRouter /> } />
-                        </>
-                    )
-
-                        :  typeUser == 'solicitante' ? (
-                            <>
-                                <Route path="/*" element={<SolicitanteRouter />} />
-                            </>
-                        ) : (
-                            <>
-                                <Route path="/complete-info" element={<CompleteInfo />} />
-                                <Route path="/*" element={<Navigate to="/complete-info" />} />
-                            </>
-                        )
-            }
-
-        </Routes>
+        {
+            (status === 'no-authenticated')
+                ? (
+                    <>
+                        <Route path="/*" element={<CleanRouter />} />
+                        <Route path="/complete-info/*" element={<Navigate to="/" />} />
+                        <Route path="/panel/*" element={<Navigate to="/" />} />
+                    </>
+                )
+                : (typeUser === 'admin') ? (
+                    <>
+                        <Route path="/*" element={<AdminRouter />} />
+                    </>
+                )
+                : (typeUser === 'ofertante' && completeInfo) ? (
+                    <>
+                        <Route path="/*" element={<OfertanteRouter />} />
+                    </>
+                )
+                : (typeUser === 'solicitante') ? (
+                    <>
+                        <Route path="/*" element={<SolicitanteRouter />} />
+                    </>
+                )
+                : (
+                    <>
+                        <Route path="/complete-info" element={<CompleteInfo />} />
+                        <Route path="/*" element={<Navigate to="/complete-info" />} />
+                    </>
+                )
+        }
+    </Routes>
     )
 }

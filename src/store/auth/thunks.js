@@ -1,5 +1,6 @@
 import usuariosApi from "../../api/usuarios.api"
 import { checkingCredentials, login, logout, isCompleteInfo, setOfertantes, setOfertanteCV, setResetCompleteInfo } from "./"
+import { toast } from 'react-toastify';
 
 export const checkingAuthentication = (email, password) => {
     return async(dispatch) => {
@@ -23,6 +24,7 @@ export const startLogin = ({cedula , password}) => {
             dispatch(login(data))
         } catch (error) {
             dispatch(logout({errorMessage: error.response.data.message}));
+            toast.error(error.response.data.message)
         }
     }
 }
@@ -38,8 +40,9 @@ export const startRegister = (dataRegister) => {
             localStorage.setItem('token-init-date', new Date().getTime() );
             dispatch(login(data));
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
             dispatch(logout({errorMessage: error.response.data.message}));
+            toast.error(error.response.data.message)
         }
     }
 }
@@ -77,7 +80,7 @@ export const checkCompleteInfo = (cedula) => {
             const {data} = await usuariosApi.post('is-complete-info', {cedula});
             dispatch(isCompleteInfo(data));
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
         }
     }
 }
@@ -96,7 +99,7 @@ export const getOfertantes = () => {
             const { data } = await usuariosApi.get('ofertantes');
             dispatch(setOfertantes(data));
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
         }
     }
 }
@@ -108,7 +111,7 @@ export const getOfertanteForCV = (cedula) => {
             dispatch(setOfertanteCV(data));
             return data;
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
         }
     }
 }
