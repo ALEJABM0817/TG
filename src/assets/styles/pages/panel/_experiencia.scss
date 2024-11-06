@@ -91,8 +91,8 @@ $error-color: #e74c3c;
     .submit-button,
     .remove-button,
     .cancel-button {
-        background-color: $button-bg-color;
-        color: $button-text-color;
+        background-color: #007bff;
+        color: #fff;
         padding: $button-padding;
         border: none;
         border-radius: $button-border-radius;
@@ -117,8 +117,8 @@ $error-color: #e74c3c;
 
     .submit-button {
         margin-top: 20px;
-        background-color: #f1f1f1;
-        color: #0056b3;
+        background-color: #007bff;
+        color: #fff;
         border: 1px solid #0056b3;
 
         &:hover {
@@ -173,8 +173,8 @@ $error-color: #e74c3c;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
             font-size: 1rem;
-            color: #0056b3;
-            background-color: #f1f1f1;
+            color: #fff;
+            background-color: #007bff;
             border: 1px solid #0056b3;
             border-radius: 4px;
             cursor: pointer;

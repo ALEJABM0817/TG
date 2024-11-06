@@ -15,7 +15,7 @@
         background-color: white;
         padding: 2rem;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 7px 13px 37px #0d408b;
         min-width: 360px;
         
         h2 {
@@ -35,7 +35,8 @@
         }
 
         button {
-            margin-top: 1.5rem;
+            display: block;
+            margin: 1.5rem auto;
             padding: 0.7rem 1.5rem;
             border: none;
             background-color: #007bff;

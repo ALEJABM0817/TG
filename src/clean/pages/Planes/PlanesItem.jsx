@@ -6,7 +6,7 @@ export const PlanesItem = ({title, content, imgSrc}) => {
             <img src={imgSrc} alt="Plan Básico" />
         </div>
         <p>{content}</p>
-        <input className="buttons" type="submit" value="Solicitar" />
+       
       </div>
   )
 }
