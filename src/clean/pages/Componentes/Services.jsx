@@ -70,7 +70,7 @@ export const Services = () => {
                             <div className="service-details">
                                 <p><strong>Nombre del {typeUser == 'solicitante' ? 'contratista' : 'solicitante'}:</strong> {service.nombre}</p>
                                 <p><strong>Teléfono:</strong> {service.telefono}</p>
-                                <p><strong>Tipo de Jornada:</strong> {servicioDisplayMapping[service.tipo_tarifa]}</p>
+                                <p><strong>Jornada:</strong> {servicioDisplayMapping[service.tipo_tarifa]}</p>
                                 <p><strong>Comentarios:</strong> {service.comentario ? service.comentario : 'Sin comentarios'}</p>
                             </div>
                             <div className="service-footer">
