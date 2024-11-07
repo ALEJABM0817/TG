@@ -7,6 +7,7 @@ import { getTarifas } from '../../../api/usuarios.api';
 import { ServiceForm } from './ServiceForm';
 
 export const OfertanteCV = () => {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export const OfertanteCV = () => {
                 <div className="cv-content-wrapper">
                     <div className="cv-header">
                         <div className="cv-header-content">
-                            <img src={'http://localhost:4000/uploads/' + ofertanteCV.photo} alt="Imagen del ofertante" className="cv-image" />
+                            <img src={`${apiUrl}uploads/${ofertanteCV.photo}`} alt="Imagen del ofertante" className="cv-image" />
                             <h2 className="cv-name">{ofertanteCV.nombre}</h2>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export const OfertantesItem = ({ imgSrc, areas, id, promedio}) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const [showPopup, setShowPopup] = useState(false);
     const { status, typeUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const OfertantesItem = ({ imgSrc, areas, id, promedio}) => {
         <>
             <div className="ofertantes-card">
                 <div className="ofertantes-image-container">
-                    <img src={'http://localhost:4000/uploads/' + imgSrc} alt="Fotografía" className="ofertantes-image" />
+                    <img src={`${apiUrl}uploads/${imgSrc}`} alt="Fotografía" className="ofertantes-image" />
                 </div>
                 <div className="ofertantes-details">
                     <h4 className="ofertantes-title">Áreas</h4>

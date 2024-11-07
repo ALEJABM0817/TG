@@ -128,7 +128,9 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         selectedServices.forEach(service => {
 
             if (service.fechas.length !== service.plan) {
-                setError(`Debe seleccionar ${service.plan} ${service.plan == 1 ? 'fecha' : 'fechas'} para el servicio de ${service.servicio}.`);
+                service.servicio ?
+                    setError(`Debe seleccionar ${service.plan} ${service.plan == 1 ? 'fecha' : 'fechas'} para el servicio de ${service.servicio}.`)
+                    : setError('Debe terminar de completar la informacion del servicio')
                 return false;
             }
 
@@ -167,12 +169,14 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
     };
 
     const validateAndSubmit = async () => {
-        console.log(selectedServices);
-        if (validateAllServices()) {
+        console.log(selectedServices, error);
+        if (!error) {
             await createService(selectedServices);
             navigate('/panel');
+            toast.info('Servicio contratado con éxito');
+        }else {
+            toast.warning(error)
         }
-        toast.info('Servicio contratado con éxito');
     };
 
     const handleSelectDates = (index) => {

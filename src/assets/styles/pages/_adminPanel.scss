@@ -2,25 +2,25 @@
     display: flex;
 
     .sidebar {
-        background-color: #f4f6f9;
-        padding: 20px;
+        background-color: $color-gray-02;
+        padding: $padding-medium;
 
         button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: $color-green-01;
+            color: $color-white;
             border: none;
-            padding: 10px 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
+            padding: $padding-small $padding-medium;
+            margin-bottom: $padding-small;
+            border-radius: $border-radius-small;
             text-align: left;
-            font-size: 16px;
+            font-size: $font-size-medium;
             width: 100%;
             max-width: 300px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color $transition-ease;
 
             &:hover {
-                background-color: #388E3C;
+                background-color: $color-green-02;
             }
 
             &:active {
@@ -30,21 +30,21 @@
     }
 
     .usuarios-list {
-        padding: 20px;
+        padding: $padding-medium;
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: $padding-medium;
         width: 100%;
         align-items: center;
     }
 
     .card {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+        border: 1px solid $color-gray-03;
+        border-radius: $border-radius-medium;
+        padding: $padding-medium;
+        background-color: $color-white;
+        box-shadow: $box-shadow-large;
+        transition: all $transition-ease;
         text-align: center;
         max-width: 300px;
         width: 100%;
@@ -54,46 +54,44 @@
         }
 
         .card-title {
-            font-size: 18px;
+            font-size: $font-size-large;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: $padding-small;
         }
 
         .card-info {
-            margin-bottom: 20px;
+            margin-bottom: $padding-medium;
 
             p {
                 margin: 5px 0;
-                font-size: 14px;
-                color: #666;
+                font-size: $font-size-small;
+                color: $color-gray-04;
             }
         }
 
         .card-action button {
-
-            color: white;
+            color: $color-white;
             border: none;
-            border-radius: 4px;
-            padding: 10px 15px;
+            border-radius: $border-radius-small;
+            padding: $padding-small $padding-medium;
             cursor: pointer;
-            font-size: 14px;
+            font-size: $font-size-small;
 
             &.deshabilitado {
-                background-color: #ff4d4f;
+                background-color: $color-red-01;
 
                 &:hover {
-                    background-color: #ff7875;
+                    background-color: $color-red-02;
                 }
             }
 
             &.habilitado {
-                background-color: #007bff;
+                background-color: $color-blue-01;
 
                 &:hover {
-                    background-color: #1890ff;
+                    background-color: $color-blue-02;
                 }
             }
-
         }
     }
 
@@ -134,7 +132,7 @@
 
         .usuarios-list {
             margin-left: 0;
-            padding: 20px;
+            padding: $padding-medium;
             padding-top: 35px;
             justify-content: center;
         }

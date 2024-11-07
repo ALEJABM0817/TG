@@ -11,7 +11,7 @@
 
     .container-radios {
         input {
-            margin-right: 10px;
+            margin-right: $padding-small;
         }
 
         span {
@@ -21,8 +21,8 @@
 }
 
 .navbar {
-    background-color: #0071ce;
-    padding: 10px 20px;
+    background-color: $color-blue-03;
+    padding: $padding-small $padding-medium;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -40,8 +40,8 @@
     }
 
     .navbar-brand {
-        color: white;
-        font-size: 1.5rem;
+        color: $color-white;
+        font-size: $font-size-large;
         font-weight: bold;
         text-decoration: none;
     }
@@ -50,10 +50,10 @@
         display: flex;
 
         .nav-link {
-            color: white;
+            color: $color-white;
             margin-right: 15px;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: $font-size-medium;
         }
 
         .nav-link:hover {
@@ -65,7 +65,7 @@
         position: relative;
 
         a {
-            color: white;
+            color: $color-white;
             text-decoration: none;
 
             &:hover {
@@ -77,22 +77,22 @@
     .user-menu {
         background: none;
         border: none;
-        color: white;
-        font-size: 1rem;
+        color: $color-white;
+        font-size: $font-size-medium;
         display: flex;
         align-items: center;
         cursor: pointer;
-        column-gap: 10px;
-
+        column-gap: $padding-small;
     }
+
     .arrow {
         margin-left: 5px;
-        border: solid white;
+        border: solid $color-white;
         border-width: 0 2px 2px 0;
         padding: 3px;
         display: inline-block;
         transform: rotate(45deg);
-        transition: transform 0.3s ease;
+        transition: transform $transition-ease;
     }
     
     .dropdown.open .arrow {
@@ -107,12 +107,12 @@
         position: absolute;
         top: 100%;
         right: 0;
-        background-color: white;
-        border-radius: 4px;
+        background-color: $color-white;
+        border-radius: $border-radius-small;
         display: none;
         flex-direction: column;
         width: 200px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: $box-shadow-medium;
     }
 
     .dropdown.open .dropdown-menu {
@@ -125,28 +125,28 @@
 
     .dropdown-menu li a,
     .dropdown-menu li button {
-        color: #0071ce;
+        color: $color-blue-03;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: $font-size-medium;
         width: 100%;
         text-align: left;
         background: none;
         border: none;
-        padding: 10px 15px;
+        padding: $padding-small $padding-medium;
         cursor: pointer;
         display: inline-block;
 
         &:hover {
-            background-color: #0071ce;
-            color: white;
+            background-color: $color-blue-03;
+            color: $color-white;
             text-decoration: none;
         }
     }
 
     .navbar a {
-        color: white;
+        color: $color-white;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: $font-size-medium;
     }
 
     .navbar-links {
@@ -180,12 +180,12 @@
 .form-Register {
     width: 90%;
     max-width: 400px;
-    background: rgb(220, 225, 230);
+    background: $color-gray-02;
     padding: 35px;
     margin: auto;
-    border-radius: 4px;
+    border-radius: $border-radius-small;
     font-family: 'calibri';
-    box-shadow: 7px 13px 37px #0d408b;
+    box-shadow: 7px 13px 37px $color-shadow;
 
     h4 {
         font-size: 22px;
@@ -211,8 +211,8 @@
             width: 100%;
             background: #e7eaec;
             padding: 8px;
-            border-radius: 4px;
-            border: 1px solid rgb(70, 63, 63);
+            border-radius: $border-radius-small;
+            border: 1px solid $color-gray-05;
             font-size: 15px;
             padding-left: 45px;
             color: #47484b;
@@ -251,18 +251,18 @@
     .buttons,
     .container-buttons .button {
         width: 100%;
-        background: #0071ce;
+        background: $color-blue-03;
         border: 2px;
         padding: 12px;
-        color: white;
+        color: $color-white;
         margin: 16px 0;
         font-size: 16px;
         cursor: pointer;
         border-radius: 10px;
-        transition: .3s ease;
+        transition: $transition-ease;
 
         &:hover {
-            background-color: #0056b3;
+            background-color: $color-blue-02;
         }
     }
 
@@ -282,7 +282,6 @@
             left: 5px;
             top: 50%;
             transform: translate(0, -50%);
-
         }
     }
 
@@ -307,7 +306,6 @@
         text-align: center;
         font-size: 14px;
         padding: 20px;
-
     }
 
     .servicios-planes-container {
@@ -322,12 +320,12 @@
 .container-planes,
 .ofertantes-content {
     width: 360px;
-    background: #fff;
+    background: $color-white;
     padding: 50px;
-    border-radius: 10px;
+    border-radius: $border-radius-large;
     font-family: 'calibri';
     color: rgb(10 95 165);
-    box-shadow: 7px 13px 37px #0d408b;
+    box-shadow: 7px 13px 37px $color-shadow;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -340,7 +338,6 @@
 
     h3 {
         text-align: center;
-
     }
 
     .container-img {
@@ -351,37 +348,6 @@
             margin-bottom: 10px;
         }
     }
-
-   // .buttons,
-    //.container-buttons .button {
-     //   width: 100%;
-      //  background: #0071ce;
-       // border: 2px;
-       // padding: 12px;
-        //color: white;
-        //margin: 16px 0;
-        //font-size: 16px;
-       // cursor: pointer;
-        //border-radius: 10px;
-      //  transition: .3s ease;
-
-        //&:hover {
-        //    background-color: #004884;
-        //}
-   // }
-
-   // .container-buttons {
-      //  display: flex;
-      //  justify-content: center;
-       // align-items: center;
-       // column-gap: 15px;
-
-       // .button {
-        //    box-shadow: 7px 13px 20px #202020;
-       // }
-  //  }
-
-
 }
 
 h1 {
@@ -394,7 +360,7 @@ h1 {
 
 .nav-ppal {
     background-color: #2f8b9b;
-    padding: 10px 10px;
+    padding: $padding-small;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -416,8 +382,8 @@ h1 {
 }
 
 .sec-ppal {
-    margin-top: 20px;
-    padding: 10px;
+    margin-top: $padding-medium;
+    padding: $padding-small;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -428,14 +394,14 @@ h1 {
     }
 
     div {
-        margin-bottom: 10px;
+        margin-bottom: $padding-small;
         width: 100%;
         text-align: start;
     }
 
     .boton {
         background-color: #8a7f7f9e;
-        color: #fff;
+        color: $color-white;
         padding: 5px 15px;
         margin-top: 5px;
         margin-bottom: 5px;
@@ -451,10 +417,10 @@ h1 {
 
 .button {
     background-color: #6e9fd4;
-    color: #fff;
+    color: $color-white;
     border: none;
     padding: 5px 10px;
-    margin-left: 10px;
+    margin-left: $padding-small;
     cursor: pointer;
 }
 
@@ -468,9 +434,9 @@ h1 {
 }
 
 .image {
-    margin: 10px;
+    margin: $padding-small;
     position: relative;
-    transition: transform 0.3s;
+    transition: transform $transition-ease;
     flex: 0 0 calc(20% - 20px);
     box-sizing: border-box;
 
@@ -491,25 +457,23 @@ h1 {
 }
 
 .button-nav {
-    background-color: #02BA26;
-    color: #fff;
+    background-color: $color-green-03;
+    color: $color-white;
     border: none;
-    padding: 10px 20px;
-    margin-left: 10px;
+    padding: $padding-small $padding-medium;
+    margin-left: $padding-small;
     cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.3s;
+    border-radius: $border-radius-large;
+    transition: background-color $transition-ease;
 
     &:hover {
-        background-color: #027017;
+        background-color: $color-green-04;
     }
 }
 
 body {
-    background-color: #f0f4f8;
+    background-color: $color-gray-14;
 }
-
-
 
 .popup-overlay {
     position: fixed;
@@ -525,10 +489,10 @@ body {
 }
 
 .popup-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: $color-white;
+    padding: $padding-medium;
+    border-radius: $border-radius-large;
+    box-shadow: $box-shadow-large;
     text-align: center;
     max-width: 400px;
     width: 100%;
@@ -537,29 +501,29 @@ body {
 .popup-buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: $padding-medium;
 }
 
 .popup-buttons .botton {
-    background-color: #2563eb;
-    color: white;
-    padding: 10px 20px;
+    background-color: $color-blue-04;
+    color: $color-white;
+    padding: $padding-small $padding-medium;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    font-size: $font-size-medium;
+    transition: background-color $transition-ease;
 
     &:hover {
-        background-color: #1d4ed8;
+        background-color: $color-blue-05;
     }
 }
 
 .popup-close {
     background: none;
     border: none;
-    color: #333;
-    font-size: 1.2rem;
-    margin-top: 20px;
+    color: $color-gray-05;
+    font-size: $font-size-large;
+    margin-top: $padding-medium;
     cursor: pointer;
 }

@@ -1,39 +1,39 @@
 .services-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: $padding-medium;
+    background-color: $color-gray-01;
+    border-radius: $border-radius-large;
+    box-shadow: $box-shadow-large;
 }
 
 .services-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #333;
+    font-size: $font-size-xxlarge;
+    margin-bottom: $padding-large;
+    color: $color-gray-05;
     font-family: 'Poppins', sans-serif;
 }
 
 .no-services {
     text-align: center;
-    font-size: 1.5rem;
-    color: #666;
-    margin-top: 20px;
+    font-size: $font-size-large;
+    color: $color-gray-04;
+    margin-top: $padding-medium;
 }
 
 .services-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: $padding-medium;
 }
 
 .service-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: $color-white;
+    border-radius: $border-radius-large;
+    box-shadow: $box-shadow-large;
+    padding: $padding-medium;
+    transition: transform $transition-ease, box-shadow $transition-ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,24 +45,24 @@
 }
 
 .service-name {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #4e73df;
+    font-size: $font-size-xlarge;
+    margin-bottom: $padding-small;
+    color: $color-blue-01;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
 }
 
 .service-details {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 15px;
+    font-size: $font-size-medium;
+    color: $color-gray-05;
+    margin-bottom: $padding-small;
 
     p {
-        margin-bottom: 10px;
+        margin-bottom: $padding-small;
     }
 
     strong {
-        color: #333;
+        color: $color-gray-05;
     }
 }
 
@@ -70,9 +70,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
-    color: #333;
-    gap: 15px;
+    font-size: $font-size-medium;
+    color: $color-gray-05;
+    gap: $padding-small;
 
     .service-date,
     .service-price {
@@ -82,14 +82,14 @@
 
 .rating-button,
 .map-button {
-    background-color: #4e73df;
-    color: white;
-    padding: 10px 15px;
+    background-color: $color-blue-01;
+    color: $color-white;
+    padding: $padding-small $padding-medium;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: $font-size-medium;
+    margin: $padding-small 2px;
     cursor: pointer;
     border: unset;
 }
@@ -102,35 +102,35 @@
     width: 300px;
     height: 400px;
     margin: auto;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
+    background-color: $color-white;
+    border-radius: $border-radius-large;
+    padding: $padding-medium;
 }
 
 .rating-title {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: $padding-medium;
 }
 
 .rating-stars {
-    margin-bottom: 20px;
+    margin-bottom: $padding-medium;
 }
 
 .rating-comment {
     width: 100%;
     height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: $padding-medium;
 }
 
 .rating-submit {
-    background-color: #4e73df;
-    color: white;
-    padding: 15px 32px;
+    background-color: $color-blue-01;
+    color: $color-white;
+    padding: $padding-medium $padding-large;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: $font-size-medium;
+    margin: $padding-small 2px;
     cursor: pointer;
     border: unset;
 }
@@ -140,10 +140,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: $color-white;
+    padding: $padding-medium;
+    border-radius: $border-radius-medium;
+    box-shadow: $box-shadow-medium;
     max-width: 350px;
     width: 100%;
 }
@@ -156,10 +156,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: $color-white;
+    padding: $padding-medium;
+    border-radius: $border-radius-medium;
+    box-shadow: $box-shadow-medium;
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
@@ -223,26 +223,26 @@
 
 @media (max-width: 768px) {
     .service-card {
-        padding: 15px;
+        padding: $padding-small;
     }
 
     .services-title {
-        font-size: 2rem;
+        font-size: $font-size-xlarge;
     }
 
     .service-name {
-        font-size: 1.5rem;
+        font-size: $font-size-large;
     }
 
     .service-details,
     .service-footer {
-        font-size: 1rem;
+        font-size: $font-size-medium;
     }
 
     .map-modal {
         max-width: 100%;
         max-height: 100%;
-        padding: 10px;
+        padding: $padding-small;
     }
 
     .map-modal .map-container {

@@ -1,0 +1,64 @@
+$color-blue-01: #007bff;
+$color-blue-02: #0056b3;
+$color-blue-03: #0071ce;
+$color-blue-04: #2563eb;
+$color-blue-05: #1d4ed8;
+$color-green-01: #4CAF50;
+$color-green-02: #388E3C;
+$color-green-03: #02BA26;
+$color-green-04: #027017;
+$color-red-01: #ff4d4f;
+$color-red-02: #ff7875;
+$color-red-03: #dc3545;
+$color-white: #ffffff;
+$color-gray-01: #f5f5f5;
+$color-gray-02: #f4f6f9;
+$color-gray-03: #ccc;
+$color-gray-04: #666;
+$color-gray-05: #333;
+$color-gray-06: #e0e0e0;
+$color-gray-07: #ddd;
+$color-gray-08: #fafafa;
+$color-gray-09: #f9f9f9;
+$color-gray-10: #e0e7ff;
+$color-gray-11: #1e3a8a;
+$color-gray-12: #e9ecef;
+$color-gray-13: #6c757d;
+$color-gray-14: #f0f4f8;
+$color-yellow: #ffc107;
+$color-black: #000000;
+$color-shadow: #0d408b;
+
+$font-size-small: 0.9rem;
+$font-size-medium: 1rem;
+$font-size-large: 1.5rem;
+$font-size-xlarge: 2rem;
+$font-size-xxlarge: 2.5rem;
+
+$padding-small: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+$border-radius-large: 10px;
+
+$box-shadow-small: 0 2px 5px rgba(0, 0, 0, 0.05);
+$box-shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.1);
+$box-shadow-large: 0 6px 12px rgba(0, 0, 0, 0.1);
+
+$transition-ease: 0.3s ease;
+
+$form-padding: 20px;
+$form-border-radius: 8px;
+$form-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+$input-border: 1px solid #ccc;
+$input-border-radius: 4px;
+$input-padding: 10px;
+$label-color: #333;
+$button-bg-color: #007bff;
+$button-text-color: #fff;
+$button-padding: 10px 20px;
+$button-border-radius: 4px;
+$button-hover-bg-color: darken($button-bg-color, 10%);
+$error-color: #e74c3c;

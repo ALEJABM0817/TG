@@ -1,22 +1,8 @@
-$padding: 20px;
-$border-radius: 8px;
-$box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-$input-border: 1px solid #ccc;
-$input-border-radius: 4px;
-$input-padding: 10px;
-$label-color: #333;
-$button-bg-color: #007bff;
-$button-text-color: #fff;
-$button-padding: 10px 20px;
-$button-border-radius: 4px;
-$button-hover-bg-color: darken($button-bg-color, 10%);
-$error-color: #e74c3c;
-
 .experience-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: $padding;
+    gap: $padding-medium;
+    padding: $padding-medium;
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -25,28 +11,28 @@ $error-color: #e74c3c;
 
 .experience-list {
     flex: 1;
-    background-color: #f9f9f9;
-    padding: $padding;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
+    background-color: $color-gray-09;
+    padding: $padding-medium;
+    border-radius: $border-radius-medium;
+    box-shadow: $box-shadow-medium;
     max-width: 500px;
 }
 
 .add-experience-form {
     flex: 1;
     max-width: 500px;
-    padding: $padding;
-    background-color: #f9f9f9;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
+    padding: $padding-medium;
+    background-color: $color-gray-09;
+    border-radius: $border-radius-medium;
+    box-shadow: $box-shadow-medium;
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: $padding-medium;
 
         label {
             color: $label-color;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: $padding-small;
             font-weight: 600;
         }
 
@@ -55,11 +41,11 @@ $error-color: #e74c3c;
         textarea {
             width: 100%;
             padding: $input-padding;
-            margin-bottom: 10px;
+            margin-bottom: $padding-small;
             border: $input-border;
             border-radius: $input-border-radius;
             font-size: 14px;
-            background-color: #fff;
+            background-color: $color-white;
             box-sizing: border-box;
 
             &:focus {
@@ -69,36 +55,36 @@ $error-color: #e74c3c;
         }
 
         input[type="checkbox"] {
-            margin-right: 5px;
+            margin-right: $padding-small;
         }
     }
 
     .error {
         color: $error-color;
         font-size: 13px;
-        margin-bottom: 15px;
+        margin-bottom: $padding-medium;
     }
 
     .experience-item {
-        margin-bottom: 20px;
+        margin-bottom: $padding-medium;
         padding: 15px;
         border: $input-border;
-        border-radius: $border-radius;
-        background-color: #f4f4f4;
+        border-radius: $border-radius-medium;
+        background-color: $color-gray-08;
     }
 
     .add-button,
     .submit-button,
     .remove-button,
     .cancel-button {
-        background-color: #007bff;
-        color: #fff;
+        background-color: $button-bg-color;
+        color: $button-text-color;
         padding: $button-padding;
         border: none;
         border-radius: $button-border-radius;
         cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-right: 5px;
+        transition: background-color $transition-ease;
+        margin-right: $padding-small;
 
         &:hover {
             background-color: $button-hover-bg-color;
@@ -107,50 +93,50 @@ $error-color: #e74c3c;
 
     .remove-button,
     .cancel-button {
-        background-color: #e74c3c;
-        border: 1px solid #e74c3c;
+        background-color: $error-color;
+        border: 1px solid $error-color;
 
         &:hover {
-            background-color: darken(#e74c3c, 10%);
+            background-color: darken($error-color, 10%);
         }
     }
 
     .submit-button {
-        margin-top: 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: 1px solid #0056b3;
+        margin-top: $padding-medium;
+        background-color: $button-bg-color;
+        color: $button-text-color;
+        border: 1px solid $color-blue-02;
 
         &:hover {
-            background-color: #0056b3;
-            color: #f1f1f1;
+            background-color: $color-blue-02;
+            color: $color-gray-01;
         }
     }
 }
 
 .experiencia-user {
     padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    background-color: $color-gray-09;
+    border-radius: $border-radius-medium;
 
     h3 {
         font-size: 1.8rem;
         font-weight: bold;
-        color: #333;
+        color: $label-color;
         margin-bottom: 1rem;
     }
 
     .cv-content {
         margin-bottom: 1.5rem;
         padding: 1rem;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
+        background-color: $color-white;
+        border: 1px solid $color-gray-07;
+        border-radius: $border-radius-medium;
 
         h4 {
             font-size: 1.6rem;
             font-weight: bold;
-            color: #0056b3;
+            color: $color-blue-02;
             margin-bottom: 0.5rem;
         }
 
@@ -159,11 +145,11 @@ $error-color: #e74c3c;
 
             p {
                 font-size: 1rem;
-                color: #444;
+                color: $color-gray-04;
                 margin: 0.3rem 0;
 
                 strong {
-                    color: #333;
+                    color: $label-color;
                     font-weight: 600;
                 }
             }
@@ -173,22 +159,22 @@ $error-color: #e74c3c;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
             font-size: 1rem;
-            color: #fff;
-            background-color: #007bff;
-            border: 1px solid #0056b3;
-            border-radius: 4px;
+            color: $color-white;
+            background-color: $button-bg-color;
+            border: 1px solid $color-blue-02;
+            border-radius: $border-radius-small;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all $transition-ease;
 
             &:hover {
-                background-color: #0056b3;
-                color: #fff;
+                background-color: $color-blue-02;
+                color: $color-white;
             }
         }
     }
 
     p {
         font-size: 1rem;
-        color: #666;
+        color: $color-gray-04;
     }
 }
