@@ -61,7 +61,7 @@ export const CompleteInfo = () => {
             if (response.data.success) {
                 const dataOfetante = await usuariosApi.post('is-complete-info',{"cedula": uid})
                 dispatch(isCompleteInfo(dataOfetante.data));
-                navigate('/panel');
+                navigate('/panel/mis-datos');
 
             console.log(response);
             }

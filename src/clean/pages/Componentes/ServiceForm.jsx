@@ -172,7 +172,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         console.log(selectedServices, error);
         if (!error) {
             await createService(selectedServices);
-            navigate('/panel');
+            navigate('/panel/mis-datos');
             toast.info('Servicio contratado con éxito');
         }else {
             toast.warning(error)
