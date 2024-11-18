@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startLogin } from "../../store/auth";
 import { useMemo } from "react";
 import { toast } from 'react-toastify';
+import logo from '../../assets/images/icons/logoApp.png'
 
 export const LoginPage = () => {
     const { status } = useSelector(state => state.auth);
@@ -42,7 +43,7 @@ export const LoginPage = () => {
 
                                 <img
                                     className="logo"
-                                    src="src\assets\images\icons\logoApp.png"
+                                    src={logo}
                                     alt=""
                                 />
                             </div>

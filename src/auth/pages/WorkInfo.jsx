@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import workImg from '../../assets/images/ofertantes/trabajo.png';
 
 export const WorkInfo = () => {
   return (
     <div className="recruitment-container">
       <div className="image-container">
         <img
-          src="src/assets/images/ofertantes/trabajo.png" 
+          src={workImg} 
           alt="Equipo de limpieza"
           className="cleaning-team-image"
         />
