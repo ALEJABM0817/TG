@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import imageForDefault from '../../../assets/images/ofertantes/foto.jpg'
 
 export const OfertantesItem = ({ imgSrc, areas, id, promedio, nombre}) => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -27,7 +28,12 @@ export const OfertantesItem = ({ imgSrc, areas, id, promedio, nombre}) => {
                     <p style={{"fontWeight": "600"}}>{nombre}</p>
                 </div>
                 <div className="ofertantes-image-container">
-                    <img src={`${apiUrl}uploads/${imgSrc}`} alt="Fotografía" className="ofertantes-image" />
+                    <img 
+                      src={`${apiUrl}uploads/${imgSrc}`} 
+                      alt="Fotografía" 
+                      className="ofertantes-image" 
+                      onError={(e) => { e.target.onerror = null; e.target.src = `${imageForDefault}`; }} 
+                    />
                 </div>
 
                 <div className="ofertantes-details">

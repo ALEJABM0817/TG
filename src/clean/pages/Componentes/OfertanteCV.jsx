@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Loader } from '../Loader/Loader';
 import { getTarifas } from '../../../api/usuarios.api';
 import { ServiceForm } from './ServiceForm';
+import imageDefault from '../../../assets/images/ofertantes/foto.jpg';
 
 export const OfertanteCV = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -42,7 +43,12 @@ export const OfertanteCV = () => {
                 <div className="cv-content-wrapper">
                     <div className="cv-header">
                         <div className="cv-header-content">
-                            <img src={`${apiUrl}/uploads/${ofertanteCV.photo}`} alt="Imagen del ofertante" className="cv-image" />
+                            <img 
+                                src={`${apiUrl}/uploads/${ofertanteCV.photo}`} 
+                                alt="Imagen del ofertante" 
+                                className="cv-image" 
+                                onError={(e) => { e.target.onerror = null; e.target.src = `${imageDefault}`; }} 
+                            />
                             <h2 className="cv-name">{ofertanteCV.nombre}</h2>
                         </div>
                     </div>
