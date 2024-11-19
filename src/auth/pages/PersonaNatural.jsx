@@ -23,7 +23,7 @@ export const PersonaNatural = () => {
   return (
     <div className="form-register-container">
       <section className="form-Register">
-        <h4>Formulario de Registro Cliente</h4>
+        <h4>Formulario de Registro Solicitante</h4>
         <Formik
           initialValues={{
             nombre: "",
@@ -159,7 +159,7 @@ export const PersonaNatural = () => {
               </div> */}
 
               <div>
-                <span>¿Deseas trabajar con nosotros? <Link to="/work">Mas Informacion</Link></span>
+                <span>¿Quieres ofertar servicios? <Link to="/work">Registrate aquí</Link></span>
               </div>
 
               {

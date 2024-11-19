@@ -159,7 +159,7 @@ export const PersonaOfertante = () => {
               </div> */}
 
               <div>
-                <span>¿Deseas trabajar con nosotros? <Link to="/work">Mas Informacion</Link></span>
+                <span>¿Quieres solicitar servicios? <Link to="/register">Registrate aquí</Link></span>
               </div>
 
               {
