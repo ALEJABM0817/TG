@@ -82,6 +82,7 @@ export const Ofertantes = () => {
                             areas={oferService.areas}
                             id={oferService.cedula}
                             promedio={oferService.promedio_calificacion}
+                            nombre={oferService.nombre}
                         />
                     ))
                 ) : (

@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-export const OfertantesItem = ({ imgSrc, areas, id, promedio}) => {
+export const OfertantesItem = ({ imgSrc, areas, id, promedio, nombre}) => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [showPopup, setShowPopup] = useState(false);
     const { status, typeUser } = useSelector(state => state.auth);
@@ -23,9 +23,13 @@ export const OfertantesItem = ({ imgSrc, areas, id, promedio}) => {
     return (
         <>
             <div className="ofertantes-card">
+                <div>
+                    <p style={{"fontWeight": "600"}}>{nombre}</p>
+                </div>
                 <div className="ofertantes-image-container">
                     <img src={`${apiUrl}uploads/${imgSrc}`} alt="Fotografía" className="ofertantes-image" />
                 </div>
+
                 <div className="ofertantes-details">
                     <h4 className="ofertantes-title">Áreas</h4>
                     <div className="ofertantes-areas">

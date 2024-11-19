@@ -42,7 +42,7 @@ export const OfertanteCV = () => {
                 <div className="cv-content-wrapper">
                     <div className="cv-header">
                         <div className="cv-header-content">
-                            <img src={`${apiUrl}uploads/${ofertanteCV.photo}`} alt="Imagen del ofertante" className="cv-image" />
+                            <img src={`${apiUrl}/uploads/${ofertanteCV.photo}`} alt="Imagen del ofertante" className="cv-image" />
                             <h2 className="cv-name">{ofertanteCV.nombre}</h2>
                         </div>
                     </div>
