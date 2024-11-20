@@ -1,6 +1,6 @@
 import React from "react";
 import { Slider } from "../../ui/Components/Slider";
-import imgBackground from "../../../src/assets/images/home/homeb.png";
+import imgBackground from "../../../src/assets/images/home/homeb.jpg";
 import img1 from "../../../src/assets/images/home/img1.png";
 import img2 from "../../../src/assets/images/home/img2.png";
 import img3 from "../../../src/assets/images/home/img3.png";
@@ -13,8 +13,9 @@ export const Home = () => {
     <>
       <div
         className="home-background"
-        style={{ backgroundImage: `url(${imgBackground})` }}
-      ></div>
+      >
+        <img src={imgBackground} alt="background" />
+      </div>
       <div className="services">
         <h1 className="title-services">¿Cómo funciona Home Helpers CO?</h1>
         <div className="container-services">
