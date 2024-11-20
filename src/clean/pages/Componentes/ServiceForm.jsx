@@ -395,7 +395,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
             ))}
 
 
-            <button onClick={handleAddService}>Solicitar servicio</button>
+            <button onClick={handleAddService}>{selectedServices.length > 0 ? 'Añadir otro servicio' : 'Solicitar servicio'}</button>
             {error && <p className="error-message">{error}</p>}
 
             <div className="total">Precio total: {numeral(calculateTotalPrice()).format('0,0')}</div>
