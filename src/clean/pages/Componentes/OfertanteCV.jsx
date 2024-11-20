@@ -6,6 +6,7 @@ import { Loader } from '../Loader/Loader';
 import { getTarifas } from '../../../api/usuarios.api';
 import { ServiceForm } from './ServiceForm';
 import imageDefault from '../../../assets/images/ofertantes/foto.jpg';
+import numeral from 'numeral';
 
 export const OfertanteCV = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -78,7 +79,7 @@ export const OfertanteCV = () => {
                                             <div key={index} className="cv-content">
                                                 <div className="cv-body">
                                                     <p><strong>Tipo de tarifa:</strong> {tipoTarifa.label}</p>
-                                                    <p><strong>Precio:</strong> {tipoTarifa.precio}</p>
+                                                    <p><strong>Precio:</strong> {numeral(tipoTarifa.precio).format('0,0')}</p>
                                                 </div>
                                             </div>
                                         ))}
