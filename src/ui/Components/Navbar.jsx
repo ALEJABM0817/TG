@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../store/auth";
+import logoApp from "../../../src/assets/images/icons/logoApp.png"
 
 export const Navbar = () => {
     const { typeUser } = useSelector((state) => state.auth);
@@ -37,6 +38,8 @@ export const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="content-left">
+                    <img src={logoApp} height="45" width="55"/>
+
                     <Link className="navbar-brand" to="/">
                         Home Helpers CO
                     </Link>

@@ -18,6 +18,16 @@
 .container-footer {
     background-color: $color-blue-03;
     padding-left: 50px;
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .logo-footer {
+        left: unset !important;
+        position: unset !important;
+    }
 }
 
 .colum {

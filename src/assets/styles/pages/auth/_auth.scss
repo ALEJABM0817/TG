@@ -36,6 +36,12 @@
         .content-left {
             display: flex;
             align-items: center;
+
+            @media (max-width: 450px) {
+                img {
+                    display: none;
+                }
+            }
         }
     }
 
@@ -225,6 +231,12 @@
             &::placeholder {
                 color: rgb(143, 141, 141);
             }
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     }
 

@@ -7,6 +7,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Modal from 'react-modal';
 import { toast } from 'react-toastify';
+import numeral from 'numeral';
 
 const localizer = momentLocalizer(moment);
 
@@ -172,7 +173,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         console.log(selectedServices, error);
         if (!error) {
             await createService(selectedServices);
-            navigate('/panel/mis-datos');
+            navigate('/panel/mis-datos');fhandleDateSelect
             toast.info('Servicio contratado con éxito');
         }else {
             toast.warning(error)
@@ -260,13 +261,22 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
             addDateToService(fecha);
             setShowCalendar(false);
         }
+
+        const fechasFaltantes = selectedService.plan - selectedService.fechas.length;
+        if (fechasFaltantes > 0) {
+            setWarning(`Te faltan por seleccionar ${fechasFaltantes} fecha(s).`);
+        } else {
+            setWarning('Ya seleccionaste todas las fechas para el plan seleccionado.');
+        }
     };
 
     const addDateToService = (fecha, turno) => {
         const updatedServices = [...selectedServices];
         const service = updatedServices[currentServiceIndex];
 
-        const isDateSelected = service.fechas.some(f => f.fecha === fecha && f.turno === turno);
+        const isDateSelected = selectedServices.some(s =>
+            s.fechas.some(f => f.fecha === fecha && f.turno === turno)
+        );
         if (isDateSelected) {
             toast.info('Ya ha seleccionado esta fecha y turno.');
             return;
@@ -282,6 +292,16 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
             }
         }
 
+        if (turno !== 'completo') {
+            const isDateSelectedForFullDay = selectedServices.some(s =>
+                s.fechas.some(f => f.fecha.includes(fecha.split(' ')[0]) && f.turno === 'completo')
+            );
+            if (isDateSelectedForFullDay) {
+                toast.info('No puede seleccionar una media jornada en un día que ya tiene una jornada completa.');
+                return;
+            }
+        }
+
         service.fechas.push({ fecha, turno });
         setSelectedServices(updatedServices);
     };
@@ -290,12 +310,26 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
         const morningDate = `${selectedDate.split(' ')[0]} 08:00`;
         addDateToService(morningDate, 'mañana');
         setShowTimeSelection(false);
-    };
 
+        const fechasFaltantes = selectedServices[currentServiceIndex].plan - selectedServices[currentServiceIndex].fechas.length;
+        if (fechasFaltantes > 0) {
+            setWarning(`Te faltan por seleccionar ${fechasFaltantes} fecha(s).`);
+        } else {
+            setWarning('Ya seleccionaste todas las fechas para el plan seleccionado.');
+        }
+    };
+    
     const addAfternoonDate = () => {
         const afternoonDate = `${selectedDate.split(' ')[0]} 14:00`;
         addDateToService(afternoonDate, 'tarde');
         setShowTimeSelection(false);
+
+        const fechasFaltantes = selectedServices[currentServiceIndex].plan - selectedServices[currentServiceIndex].fechas.length;
+        if (fechasFaltantes > 0) {
+            setWarning(`Te faltan por seleccionar ${fechasFaltantes} fecha(s).`);
+        } else {
+            setWarning('Ya seleccionaste todas las fechas para el plan seleccionado.');
+        }
     };
 
     return (
@@ -325,7 +359,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
                         <option value="">Seleccionar tipo de jornada</option>
                         {servicios.find(s => s.servicio === selectedService.servicio)?.tipos_tarifas.map(tarifa => (
                             <option key={tarifa.tipo_tarifa_id} value={tarifa.tipo_tarifa}>
-                                {tarifa.label} - {tarifa.precio}
+                                {tarifa.label} - {numeral(tarifa.precio).format('0,0')}
                             </option>
                         ))}
                     </select>
@@ -364,7 +398,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
             <button onClick={handleAddService}>Solicitar servicio</button>
             {error && <p className="error-message">{error}</p>}
 
-            <div className="total">Precio total: {calculateTotalPrice()}</div>
+            <div className="total">Precio total: {numeral(calculateTotalPrice()).format('0,0')}</div>
 
             {
                 !!selectedServices.length && <button className='button-send' onClick={validateAndSubmit}>Enviar</button>
