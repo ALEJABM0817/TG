@@ -220,7 +220,7 @@ export const CompleteInfoStep1 = ({ onNext }) => {
                                                         }
                                                         className="add-button"
                                                     >
-                                                        Agregar experiencia
+                                                        Agregar otra experiencia
                                                     </button>
                                                 </div>
                                             )}

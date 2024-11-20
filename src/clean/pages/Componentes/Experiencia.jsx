@@ -184,7 +184,7 @@ export const Experiencia = () => {
                                                     cedula: uid,
                                                     hasExperience: true,
                                                 })}>
-                                                    Agregar experiencia
+                                                    Agregar otra experiencia
                                                 </button>
                                             )}
                                         </div>
