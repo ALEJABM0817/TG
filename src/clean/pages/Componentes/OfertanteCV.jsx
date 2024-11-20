@@ -108,7 +108,7 @@ export const OfertanteCV = () => {
 
                             <div className='cv-comments'>
                                 <h3>Comentarios</h3>
-                                {(ofertanteCV.comentarios.length || !ofertanteCV.comentarios) ? ofertanteCV.comentarios.map((comment, index) => (
+                                {(ofertanteCV.comentarios.length && !!ofertanteCV.comentarios) ? ofertanteCV.comentarios.map((comment, index) => (
                                     <div key={index} className="cv-comment">
                                         <div className="cv-comment-body">
                                             <p><strong>Realizado por:</strong> {comment.nombre}</p>
