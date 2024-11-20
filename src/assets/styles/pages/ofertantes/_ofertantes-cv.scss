@@ -4,14 +4,16 @@
 
     .back-btn {
         margin-bottom: $padding-small;
-        background-color: $color-gray-07;
+        background-color: $color-blue-01;
+        color: $color-white;
         padding: $padding-small;
         border: none;
         cursor: pointer;
         border-radius: $border-radius-small;
+        transition: color $transition-ease, background-color $transition-ease;
 
         &:hover {
-            background-color: $color-gray-06;
+            background-color: $color-blue-02;
         }
     }
 }

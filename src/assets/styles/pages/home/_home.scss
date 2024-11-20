@@ -3,11 +3,16 @@
 }
 
 .home-background {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top left;
     width: 100%;
-    height: 400px;
+    aspect-ratio: 4 / 1;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 .title-services {
@@ -18,6 +23,16 @@
 .container-footer {
     background-color: $color-blue-03;
     padding-left: 50px;
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .logo-footer {
+        left: unset !important;
+        position: unset !important;
+    }
 }
 
 .colum {

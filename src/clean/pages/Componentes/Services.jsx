@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import { toast } from 'react-toastify';
 import { GoogleMap, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import { useGoogleMaps } from '../../../google-maps/GoogleMapsProvider';
+import numeral from 'numeral';
 
 Modal.setAppElement('#root');
 
@@ -130,10 +131,10 @@ export const Services = () => {
                             </div>
                             <div className="service-footer">
                                 <p className="service-date">
-                                    <strong>Fecha: </strong>
+                                    <strong>{service.fechas.length == 1 ? 'Fecha: ' : 'Fechas: '}</strong>
                                     {service.fechas.map((date, index) => new Date(date.fecha).toLocaleDateString()).join(', ')}
                                 </p>
-                                <p className="service-price"><strong>Precio por jornada:</strong> ${service.precio}</p>
+                                <p className="service-price"><strong>Total:</strong> ${numeral(service.precio * service.fechas.length).format('0,0')}</p>
                             </div>
 
                             {typeUser === 'solicitante' && service.status === 'Pendiente' && (

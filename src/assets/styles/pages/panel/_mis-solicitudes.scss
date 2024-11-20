@@ -74,11 +74,6 @@
     font-size: $font-size-medium;
     color: $color-gray-05;
     gap: $padding-small;
-
-    .service-date,
-    .service-price {
-        font-weight: bold;
-    }
 }
 
 .rating-button,
@@ -144,7 +139,7 @@
     background: $color-white;
     padding: $padding-medium;
     border-radius: $border-radius-medium;
-    box-shadow: $box-shadow-medium;
+    box-shadow: $box-shadow-large;
     max-width: 350px;
     width: 100%;
 }
@@ -160,7 +155,7 @@
     background: $color-white;
     padding: $padding-medium;
     border-radius: $border-radius-medium;
-    box-shadow: $box-shadow-medium;
+    box-shadow: $box-shadow-large;
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
@@ -179,12 +174,17 @@
 
 .map-container {
     width: 800px;
-    height: 600px;
+    height: 45vh;
+    min-height: 460px;
 }
 
 .map-container>div {
     width: 800px;
-    height: 600px;
+    height: 100%;
+}
+
+.ReactModal__Overlay--after-open {
+    z-index: 9999;
 }
 
 @media (max-width: 768px) {
