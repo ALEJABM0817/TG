@@ -70,7 +70,8 @@ export const LoginPage = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-
+                            <p><Link to="/request-password-reset">Olvidé mi contraseña</Link>
+                            </p>
                             <button
                                 className="buttons"
                                 type="submit"
@@ -84,8 +85,7 @@ export const LoginPage = () => {
                             <p className="info-text">
                                 <Link to="/register">Regístrate aquí.</Link>
                             </p>
-                                <p><Link to="/request-password-reset">Olvidé mi contraseña</Link>
-                            </p>
+                               
                         </Form>
                     )}
                 </Formik>
