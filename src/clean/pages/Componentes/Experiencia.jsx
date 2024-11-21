@@ -184,7 +184,7 @@ export const Experiencia = () => {
                                                     cedula: uid,
                                                     hasExperience: true,
                                                 })}>
-                                                    Agregar otra experiencia
+                                                    {values.experiences.length > 0 ? 'Agregar otra experiencia' : 'Agregar experiencia'}
                                                 </button>
                                             )}
                                         </div>

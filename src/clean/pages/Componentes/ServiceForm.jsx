@@ -66,7 +66,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
     };
 
     const handleAddService = () => {
-        setSelectedServices([...selectedServices, { idOfertante, idSolicitante: uid, servicio_id: '', servicio: '', tipo_tarifa: '', tipo_tarifa_id: '', fechas: [], plan: 1, precio: 0, comentario: '' }]);
+        setSelectedServices([...selectedServices, { idOfertante, idSolicitante: uid, servicio_id: '', servicio: '', tipo_tarifa: '', tipo_tarifa_id: '', fechas: [], plan: 0, precio: 0, comentario: '' }]);
     };
 
     const handleServiceChange = (index, field, value) => {
@@ -170,10 +170,9 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
     };
 
     const validateAndSubmit = async () => {
-        console.log(selectedServices, error);
         if (!error) {
             await createService(selectedServices);
-            navigate('/panel/mis-datos');fhandleDateSelect
+            navigate('/panel/solicitudes');
             toast.info('Servicio contratado con éxito');
         }else {
             toast.warning(error)
@@ -368,7 +367,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
                         value={selectedService.plan}
                         onChange={(e) => handlePlanChange(index, e.target.value)}
                     >
-                         
+                        <option value="0">Selecciona los días</option>
                         <option value="1">1 día</option>
                         <option value="2">2 días</option>
                         <option value="3">3 días</option>
