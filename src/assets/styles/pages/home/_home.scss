@@ -95,7 +95,7 @@
 .reset-password {
     display: flex;
     flex-direction: column;
-    text-align: right;
+    align-items: right;
     justify-content: center;
     height: calc(100vh - 66px);
     background-color: $color-gray-08;
