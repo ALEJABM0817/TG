@@ -67,7 +67,7 @@ export const Footer = () => {
           <ul className="nav flex-column">
             <li className="nav-item mb-2">
               <a href="#" className="text-secundary">
-                Correo:homehelpersco1@gmail.com
+                Correo: homehelpersco1@gmail.com
               </a>
             </li>
           </ul>
