@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getTarifas, getUserData } from '../../../api/usuarios.api';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import numeral from 'numeral';
 
 export const MisDatos = () => {
     const { uid } = useSelector((state) => state.auth);
@@ -58,7 +59,7 @@ export const MisDatos = () => {
                                             <div key={index} className="cv-content">
                                                 <div className="cv-body">
                                                     <p><strong>Tipo de tarifa:</strong> {tipoTarifa.label}</p>
-                                                    <p><strong>Precio:</strong> {tipoTarifa.precio}</p>
+                                                    <p><strong>Precio:</strong> {numeral(tipoTarifa.precio).format('0,0')}</p>
                                                 </div>
                                             </div>
                                         ))}

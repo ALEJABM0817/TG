@@ -90,3 +90,66 @@
         }
     }
 }
+
+.request-password-reset,
+.reset-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 66px);
+    background-color: $color-gray-08;
+    margin: 0 20px;
+
+    .form-title {
+        color: $color-gray-15;
+        font-size: $font-size-xlarge;
+        margin-bottom: $padding-medium;
+    }
+
+    .form-description {
+        color: $color-gray-05;
+        font-size: $font-size-medium;
+        margin-bottom: $padding-medium;
+        text-align: center;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $color-white;
+        padding: $form-padding;
+        border-radius: $form-border-radius;
+        box-shadow: $form-box-shadow;
+        margin: 0;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: $input-padding;
+        margin-bottom: $padding-small;
+        border: $input-border;
+        border-radius: $input-border-radius;
+        font-size: $font-size-medium;
+    }
+
+    .form-button {
+        background-color: $button-bg-color;
+        color: $button-text-color;
+        padding: $button-padding;
+        border: none;
+        border-radius: $button-border-radius;
+        cursor: pointer;
+        transition: background-color $transition-ease;
+
+        &:hover {
+            background-color: $button-hover-bg-color;
+        }
+
+        &:disabled {
+            background-color: $color-gray-13;
+            cursor: not-allowed;
+        }
+    }
+}

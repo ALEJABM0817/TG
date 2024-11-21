@@ -46,6 +46,10 @@
         font-size: $font-size-xlarge;
         font-weight: bold;
         color: $color-gray-05;
+
+        + div .stars-container {
+            margin: auto;
+        }
     }
 }
 
@@ -330,5 +334,37 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+    }
+}
+
+.cv-comments {
+    margin-top: 2rem;
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: $label-color;
+        margin-bottom: 1rem;
+    }
+
+    .cv-comment {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: $color-white;
+        border: 1px solid $color-gray-07;
+        border-radius: $border-radius-medium;
+
+        .cv-comment-body {
+            p {
+                font-size: 1rem;
+                color: $color-gray-04;
+                margin: 0.3rem 0;
+
+                strong {
+                    color: $label-color;
+                    font-weight: 600;
+                }
+            }
+        }
     }
 }
