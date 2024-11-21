@@ -10,6 +10,8 @@ import { PersonaNatural } from "../../../auth/pages/PersonaNatural";
 import { WorkInfo } from "../../../auth/pages/WorkInfo";
 import { PersonaOfertante } from "../../../auth/pages/PersonaOfetante";
 import { Panel } from "../admin/Panel";
+import { RequestPasswordReset } from "../Componentes/RequestPasswordReset";
+import { ResetPassword } from "../Componentes/ResetPassword";
 
 
 export const CleanRouter = () => {
@@ -28,6 +30,8 @@ export const CleanRouter = () => {
                 <Route path="/register-ofertante" element={<PersonaOfertante />} />
                 <Route path="/panel" element={<Panel />} />
                 <Route path="/Ofertantes/*" element={<Navigate to="/" />} />
+                <Route path="/request-password-reset" element={<RequestPasswordReset />} />
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
             </Routes>
         </>
     );
