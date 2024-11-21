@@ -84,8 +84,7 @@ export const LoginPage = () => {
                             <p className="info-text">
                                 <Link to="/register">Regístrate aquí.</Link>
                             </p>
-                            <p className="info-text">¿Olvidaste tu contraseña?</p>
-                                <p><Link to="/request-password-reset">Recupérala aquí.</Link>
+                                <p><Link to="/request-password-reset">Olvidé mi contraseña</Link>
                             </p>
                         </Form>
                     )}
