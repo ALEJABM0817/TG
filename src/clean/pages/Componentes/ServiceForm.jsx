@@ -368,7 +368,7 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
                         value={selectedService.plan}
                         onChange={(e) => handlePlanChange(index, e.target.value)}
                     >
-                         <option value="0">Selecciona los días</option>
+                         
                         <option value="1">1 día</option>
                         <option value="2">2 días</option>
                         <option value="3">3 días</option>
