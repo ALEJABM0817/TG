@@ -32,6 +32,7 @@ Luego, instala las dependencias del proyecto:
 yarn install
 ```
 ## Crear archivo .env
+
 crear un archivo .env en la raiz del proyecto y agregar la siguiente linea:
 VITE_API_URL=http://localhost:4000/
 
@@ -42,7 +43,7 @@ yarn dev
 ```
 ## Despliegue
 
-homehelpersco.vercel.app/
+[homehelpersco.vercel.app/](https://homehelpersco.vercel.app/)
 
 ## Anexos
 En esta sección se adjuntan todos los entregables del proyecto:
