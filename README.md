@@ -1,11 +1,18 @@
-# React + Vite
 
-Este proyecto utiliza React con Vite para proporcionar una configuración mínima con HMR y algunas reglas de ESLint.
+#HOME HELPERS CO
+Prototipo de software para la gestión en la contratación de servicios generales, a través de un proceso tecnológico. 
+
+## Introducción
+Bienvenid@ a Home Helpers CO, esta es una plataforma innovadora que conecta a quienes necesitan servicios generales con los prestadores de estos, permitiendo solicitar u ofertar servicios de manera eficiente y personalizada. Los usuarios pueden cotizar precios según el servicio requerido y el proveedor seleccionado, elegir fechas convenientes para la prestación del servicio y detallar sus necesidades para garantizar resultados óptimos. ¡Conecta, colabora y encuentra lo que necesitas en un solo lugar!
 
 ## Requisitos
 
 - Node.js
 - Yarn
+- 
+#React + Vite
+
+Este proyecto utiliza React con Vite para proporcionar una configuración mínima con HMR y algunas reglas de ESLint.
 
 ## Instalación
 
