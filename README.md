@@ -1,5 +1,7 @@
 
-#HOME HELPERS CO
+##HOME HELPERS CO
+
+
 Prototipo de software para la gestión en la contratación de servicios generales, a través de un proceso tecnológico. 
 
 ## Introducción
