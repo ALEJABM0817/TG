@@ -44,11 +44,17 @@ yarn dev
 En esta sección se adjuntan todos los entregables del proyecto:
 
 Anexo A: https://drive.google.com/file/d/1oNaR_XORaQDCiUy7Zs8LgfQ2UR7hLbb_/view?usp=sharing
+
 Anexo B: https://drive.google.com/file/d/1BGNQKxSu1vlp3iAgJgrYJK6Np7g0TYow/view?usp=sharing
+
 Anexo C: https://drive.google.com/file/d/19EkzTxTkhT1NZCltYpNxm8S8lEPUjYVH/view?usp=sharing
+
 Anexo D: https://drive.google.com/file/d/1bF6BNdnOPKci-LCgsDBl_e_j3MuCWNQg/view?usp=sharing
+
 Anexo E: https://drive.google.com/file/d/10bBjexLDw8WmYNib-0FJxlIutjeMI2Ik/view?usp=sharing
+
 Encuesta de satisfacción: https://docs.google.com/forms/d/e/1FAIpQLScD72cpLYGzheC0OcB8DtuvznLjc7sKcaAqcB0pKRtZm7kuTQ/viewform?usp=sf_link
+
 Tablero de actividades: https://trello.com/b/wqPbcEDr/homehelpersco
 
 
