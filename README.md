@@ -30,7 +30,7 @@ Luego, instala las dependencias del proyecto:
 
 ```bash
 yarn install
-
+```
 ## Crear archivo .env
 crear un archivo .env en la raiz del proyecto y agregar la siguiente linea:
 VITE_API_URL=http://localhost:4000/
@@ -39,7 +39,7 @@ Luego, puedes iniciar el servidor de desarrollo:
 
 ```bash
 yarn dev
-
+```
 ## Anexos
 tal cosa
 
