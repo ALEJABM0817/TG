@@ -1,3 +1,5 @@
+# Este repositorio es el frontend la segunda parte que es el backend la encuentras en:
+https://github.com/ALEJABM0817/Backend-TG
 
 ##  HOME HELPERS CO
 
@@ -11,7 +13,7 @@ Bienvenid@ a Home Helpers CO, esta es una plataforma innovadora que conecta a qu
 
 - Ofertante
 - Solicitante
-- Administrador
+- Administrador usuario:  contraseña:
 
 ## Requisitos
 
