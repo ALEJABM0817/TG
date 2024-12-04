@@ -13,7 +13,7 @@ Bienvenid@ a Home Helpers CO, esta es una plataforma innovadora que conecta a qu
 
 - Ofertante
 - Solicitante
-- Administrador usuario:  contraseña:
+- Administrador
 
 ## Requisitos
 
@@ -46,6 +46,13 @@ yarn dev
 ## Despliegue
 
 [homehelpersco.vercel.app/](https://homehelpersco.vercel.app/)
+
+## Usuario Administrador
+
+Si deseas entrar como usuario administrador:
+
+Cedula: 1234567890
+Contraseña: securepassword
 
 ## Anexos
 En esta sección se adjuntan todos los entregables del proyecto:
