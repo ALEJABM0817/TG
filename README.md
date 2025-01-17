@@ -1,4 +1,4 @@
-# Este repositorio es el frontend la segunda parte que es el backend la encuentras en:
+# Este repositorio es el frontend la segunda parte que es el backend se encuentra en:
 https://github.com/ALEJABM0817/Backend-TG
 
 ##  HOME HELPERS CO
