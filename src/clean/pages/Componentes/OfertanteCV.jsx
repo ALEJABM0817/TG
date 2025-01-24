@@ -85,7 +85,7 @@ export const OfertanteCV = () => {
                                             <p><strong>Responsabilidades:</strong> {item.responsibilities}</p>
                                             <p><strong>Inicio:</strong> {new Date(item.startDate).toLocaleDateString()}</p>
                                             <p><strong>Fin:</strong> {item.isCurrent ? 'Actualmente trabajando' : new Date(item.endDate).toLocaleDateString()}</p>
-                                            <p><strong>Teléfono:</strong> {item.telefono}</p>
+                                            <p><strong>Teléfono:</strong> {(item.telefono) ? item.telefono : 'Teléfono no disponible'}</p>
                                         </div>
                                     </div>
                                 ))) : <p>Sin Experiencia</p>}
