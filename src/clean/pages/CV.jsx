@@ -12,7 +12,7 @@ export const CV = () => {
       <section className="basic-info">
         <h2>Información Básica</h2>
         <p>
-          <strong>Email:</strong> ejemplo@correo.com
+          <strong>Correo electrónico:</strong> ejemplo@correo.com
         </p>
         <p>
           <strong>Teléfono:</strong> +1234567890

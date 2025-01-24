@@ -26,6 +26,7 @@ const validationSchema = Yup.object().shape({
                 otherwise: schema => schema.nullable(),
             }),
             responsibilities: Yup.string().required('Requerido'),
+            telefono: Yup.string().required('Requerido').matches(/^[0-9]+$/, 'El teléfono debe contener solo números').min(10, 'El teléfono debe tener al menos 10 dígitos'),
         })
     ).when('hasExperience', {
         is: true,
@@ -197,6 +198,18 @@ export const CompleteInfoStep1 = ({ onNext }) => {
                                                                     className="error"
                                                                 />
                                                             </div>
+                                                            <div className="form-group">
+                                                                <label>Teléfono:</label>
+                                                                <Field
+                                                                    name={`experiences[${index}].telefono`}
+                                                                    type="text"
+                                                                />
+                                                                <ErrorMessage
+                                                                    name={`experiences[${index}].telefono`}
+                                                                    component="div"
+                                                                    className="error"
+                                                                />
+                                                            </div>
                                                             <button
                                                                 type="button"
                                                                 onClick={() => remove(index)}
@@ -216,6 +229,7 @@ export const CompleteInfoStep1 = ({ onNext }) => {
                                                                 isCurrent: false,
                                                                 endDate: '',
                                                                 responsibilities: '',
+                                                                telefono: '', // Agregar campo teléfono
                                                             })
                                                         }
                                                         className="add-button"

@@ -23,6 +23,7 @@ const validationSchema = Yup.object().shape({
                 otherwise: schema => schema.nullable(),
             }),
             responsibilities: Yup.string().required('Requerido'),
+            telefono: Yup.string().required('Requerido').matches(/^[0-9]+$/, 'El teléfono debe contener solo números').min(10, 'El teléfono debe tener al menos 10 dígitos'),
             cedula: Yup.string().required('Requerido'),
             hasExperience: Yup.boolean().required('Requerido'),
         })
@@ -78,6 +79,7 @@ export const Experiencia = () => {
         }));
         try {
             await saveExperience(modifiedValues);
+            console.log(modifiedValues);
             handleCancelEdit();
             resetForm();
             fetchData();
@@ -162,6 +164,12 @@ export const Experiencia = () => {
                                                         <ErrorMessage name={`experiences[${index}].responsibilities`} component="div" className="error" />
                                                     </div>
 
+                                                    <div className="form-group">
+                                                        <label>Teléfono:</label>
+                                                        <Field name={`experiences[${index}].telefono`} type="text" />
+                                                        <ErrorMessage name={`experiences[${index}].telefono`} component="div" className="error" />
+                                                    </div>
+
                                                     <Field name={`experiences[${index}].cedula`} type="hidden" value={uid} />
                                                     <Field name={`experiences[${index}].hasExperience`} type="hidden" value={true} />
 
@@ -181,6 +189,7 @@ export const Experiencia = () => {
                                                     isCurrent: false,
                                                     endDate: '',
                                                     responsibilities: '',
+                                                    telefono: '',
                                                     cedula: uid,
                                                     hasExperience: true,
                                                 })}>
@@ -191,7 +200,7 @@ export const Experiencia = () => {
                                     )}
                                 </FieldArray>
 
-                                {values.experiences.some(exp => exp.title || exp.company || exp.startDate || exp.responsibilities) && (
+                                {values.experiences.some(exp => exp.title || exp.company || exp.startDate || exp.responsibilities || exp.telefono) && (
                                     <button type="submit" className="submit-button">
                                         {editingIndex !== null ? 'Actualizar experiencia' : 'Guardar experiencia'}
                                     </button>

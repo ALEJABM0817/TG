@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getServices, setRating } from '../../../api/usuarios.api';
+import { getServices, setRating, deleteService } from '../../../api/usuarios.api';
 import ReactStars from "react-rating-stars-component";
 import Modal from 'react-modal';
 import { toast } from 'react-toastify';
@@ -38,6 +38,8 @@ export const Services = () => {
     const [selectedAddress, setSelectedAddress] = useState('');
     const [directionsResponse, setDirectionsResponse] = useState(null);
     const [shouldFetchDirections, setShouldFetchDirections] = useState(false);
+    const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+    const [serviceToDelete, setServiceToDelete] = useState(null);
 
     const fetchServices = async () => {
         const { data } = await getServices(uid, typeUser);
@@ -83,6 +85,17 @@ export const Services = () => {
         }
     };
 
+    const handleDeleteService = async () => {
+        try {
+            await deleteService(serviceToDelete.id);
+            setIsConfirmModalOpen(false);
+            fetchServices();
+            toast.success('Servicio cancelado exitosamente.');
+        } catch (error) {
+            toast.error('Hubo un error al cancelar el servicio. Por favor, inténtalo de nuevo.');
+        }
+    };
+
     const ensureAddressContainsKeywords = (address) => {
         const lowerCaseAddress = address.toLowerCase();
     
@@ -113,6 +126,13 @@ export const Services = () => {
         setShouldFetchDirections(false);
     };
 
+    const isServiceBeforeToday = (serviceDates) => {
+        const today = new Date();
+        const twoDaysBeforeToday = new Date(today);
+        twoDaysBeforeToday.setDate(today.getDate() - 2);
+    
+        return serviceDates.some(date => new Date(date.fecha) > twoDaysBeforeToday);
+    };
     return (
         <div className="services-container">
             <h1 className="services-title">Solicitudes de Servicio</h1>
@@ -138,10 +158,18 @@ export const Services = () => {
                             </div>
 
                             {typeUser === 'solicitante' && service.status === 'Pendiente' && (
-                                <button className="rating-button" onClick={() => {
-                                    setIsModalOpen(true);
-                                    setRatingServiceIndex(index);
-                                }}>Calificar servicio</button>
+                                <>
+                                    <button className="rating-button" onClick={() => {
+                                        setIsModalOpen(true);
+                                        setRatingServiceIndex(index);
+                                    }}>Calificar servicio</button>
+                                    {isServiceBeforeToday(service.fechas) && (
+                                        <button className="cancel-button eliminar-btn" onClick={() => {
+                                            setIsConfirmModalOpen(true);
+                                            setServiceToDelete(service);
+                                        }}>Cancelar servicio</button>
+                                    )}
+                                </>
                             )}
 
                             {typeUser === 'ofertante' && (
@@ -170,6 +198,14 @@ export const Services = () => {
                                 />
 
                                 <button className="rating-submit" onClick={handleRatingSubmit}>Enviar calificación</button>
+                            </Modal>
+
+                            <Modal className="confirm-modal" isOpen={isConfirmModalOpen} onRequestClose={() => setIsConfirmModalOpen(false)}>
+                                <button className="modal-close-button" onClick={() => setIsConfirmModalOpen(false)}>X</button>
+                                <h2 className="confirm-title">Confirmar cancelación</h2>
+                                <p>¿Deseas confirmar la cancelación del servicio?</p>
+                                <button className="confirm-yes" onClick={handleDeleteService}>Sí</button>
+                                <button className="confirm-no" onClick={() => setIsConfirmModalOpen(false)}>No</button>
                             </Modal>
                         </div>
                     ))}

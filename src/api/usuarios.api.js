@@ -65,4 +65,7 @@ export const setRating = async (rating) =>
 export const saveExperience = async (experiences) =>
     await usuariosApi.post("/save-experience", {experiences});
 
+export const deleteService = async (serviceId) =>
+    await usuariosApi.post(`/service-delete`, { id: serviceId });
+
 export default usuariosApi;

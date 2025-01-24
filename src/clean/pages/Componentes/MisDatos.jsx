@@ -44,7 +44,7 @@ export const MisDatos = () => {
                             <p><strong>Cédula:</strong> {userData.cedula}</p>
                             <p><strong>Dirección:</strong> {userData.direccion}</p>
                             <p><strong>Teléfono:</strong> {userData.telefono}</p>
-                            <p><strong>Email:</strong> {userData.email}</p>
+                            <p><strong>Correo electrónico:</strong> {userData.email}</p>
                             <button onClick={handleEditClick}>Editar</button>
                         </div>
                     )}

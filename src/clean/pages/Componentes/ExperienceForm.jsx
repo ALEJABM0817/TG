@@ -14,7 +14,8 @@ export const ExperienceForm = ({
         startDate: '',
         endDate: '',
         responsibilities: '',
-        isCurrent: false
+        isCurrent: false,
+        telefono: ''
     });
 
     const [isEditing, setIsEditing] = useState(false);
@@ -22,26 +23,26 @@ export const ExperienceForm = ({
 
     useEffect(() => {
         if (experience) {
-        
             setFormData({
                 title: experience.title,
                 company: experience.company,
                 startDate: new Date(experience.startDate).toISOString().slice(0, 10),
                 endDate: experience.isCurrent ? '' : new Date(experience.endDate).toISOString().slice(0, 10),
                 responsibilities: experience.responsibilities,
-                isCurrent: experience.isCurrent
+                isCurrent: experience.isCurrent,
+                telefono: experience.telefono
             });
             setIsEditing(true);
             setIsAddingNew(false);
         } else {
-        
             setFormData({
                 title: '',
                 company: '',
                 startDate: '',
                 endDate: '',
                 responsibilities: '',
-                isCurrent: false
+                isCurrent: false,
+                telefono: ''
             });
             setIsEditing(false);
         }
@@ -138,6 +139,16 @@ export const ExperienceForm = ({
                         <textarea 
                             name="responsibilities" 
                             value={formData.responsibilities} 
+                            onChange={handleInputChange} 
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <label>Teléfono:</label>
+                        <input 
+                            type="text" 
+                            name="telefono" 
+                            value={formData.telefono} 
                             onChange={handleInputChange} 
                             required 
                         />

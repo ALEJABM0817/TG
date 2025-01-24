@@ -90,6 +90,20 @@
     border: unset;
 }
 
+.rating-button + .cancel-button {
+    background-color: $error-color;
+    color: $button-text-color;
+    padding: $button-padding;
+    border: none;
+    border-radius: $button-border-radius;
+    cursor: pointer;
+    transition: background-color $transition-ease;
+
+    &:hover {
+        background-color: darken($error-color, 10%);
+    }
+}
+
 .rating-modal {
     display: flex;
     flex-direction: column;
@@ -131,7 +145,7 @@
     border: unset;
 }
 
-.rating-modal {
+.rating-modal, .confirm-modal  {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -142,7 +156,38 @@
     box-shadow: $box-shadow-large;
     max-width: 350px;
     width: 100%;
+
+    .confirm-yes {
+        background-color: $color-blue-01;
+        color: $color-white;
+        padding: $padding-small $padding-medium;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: $font-size-medium;
+        margin: $padding-small 2px;
+        cursor: pointer;
+        border: unset;
+        width: 45%;
+    }
+
+    .confirm-no {
+        background-color: $error-color;
+        color: $color-white;
+        padding: $padding-small $padding-medium;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: $font-size-medium;
+        margin: $padding-small 2px;
+        cursor: pointer;
+        border: unset;
+        float: right;
+        width: 45%;
+    }
 }
+
+.confirm-modal 
 
 .map-modal {
     display: flex;

@@ -88,7 +88,7 @@ export const MisDatosEdit = () => {
                     required
                 />
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Correo electrónico</label>
                 <input
                     type="email"
                     id="email"
