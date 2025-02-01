@@ -128,15 +128,21 @@ export const Services = () => {
 
     const isServiceBeforeToday = (serviceDates) => {
         const today = new Date();
-        const twoDaysBeforeToday = new Date(today);
-        twoDaysBeforeToday.setDate(today.getDate() - 2);
+        today.setHours(0, 0, 0, 0);
 
-        twoDaysBeforeToday.setHours(0, 0, 0, 0);
+        const twoDaysAfterToday = new Date(today);
+        twoDaysAfterToday.setDate(today.getDate() + 2);
 
-        return serviceDates.some(date => {
-            const serviceDate = new Date(date.fecha);
+        console.log("Hoy:", today.toISOString());
+        console.log("Dentro de 2 días:", twoDaysAfterToday.toISOString());
+
+        return serviceDates.some(service => {
+            const serviceDate = new Date(service.fecha);
             serviceDate.setHours(0, 0, 0, 0);
-            return serviceDate <= twoDaysBeforeToday;
+
+            console.log("Fecha del servicio:", serviceDate.toISOString());
+
+            return serviceDate > twoDaysAfterToday;
         });
     };
     return (
