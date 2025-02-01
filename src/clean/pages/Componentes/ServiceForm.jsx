@@ -4,11 +4,13 @@ import { createService, getServices } from '../../../api/usuarios.api';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import 'moment/locale/es';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import Modal from 'react-modal';
 import { toast } from 'react-toastify';
 import numeral from 'numeral';
 
+moment.locale('es');
 const localizer = momentLocalizer(moment);
 
 Modal.setAppElement('#root');
@@ -417,6 +419,20 @@ export const ServiceForm = ({ servicios, idOfertante }) => {
                     style={{ height: 500 }}
                     views={['month']}
                     dayPropGetter={CustomDay}
+                    messages={{
+                        next: "Sig",
+                        previous: "Ant",
+                        today: "Hoy",
+                        month: "Mes",
+                        week: "Semana",
+                        day: "Día",
+                        agenda: "Agenda",
+                        date: "Fecha",
+                        time: "Hora",
+                        event: "Evento",
+                        noEventsInRange: "No hay eventos en este rango.",
+                        showMore: total => `+ Ver más (${total})`
+                    }}
                 />
                 <button className='close-modal button' onClick={() => setShowCalendar(false)}>Cerrar</button>
             </Modal>

@@ -130,8 +130,14 @@ export const Services = () => {
         const today = new Date();
         const twoDaysBeforeToday = new Date(today);
         twoDaysBeforeToday.setDate(today.getDate() - 2);
-    
-        return serviceDates.some(date => new Date(date.fecha) > twoDaysBeforeToday);
+
+        twoDaysBeforeToday.setHours(0, 0, 0, 0);
+
+        return serviceDates.some(date => {
+            const serviceDate = new Date(date.fecha);
+            serviceDate.setHours(0, 0, 0, 0);
+            return serviceDate <= twoDaysBeforeToday;
+        });
     };
     return (
         <div className="services-container">
