@@ -61,7 +61,7 @@ export const Home = () => {
           </div>
           <div className="container-services__item">
             <img src={img5} />
-            <h2>Califica el servicio a a tu profesional</h2>
+            <h2>Califica el servicio a tu profesional</h2>
             <p>
               Después de que el servicio haya sido completado, evalúa la calidad
               del servicio recibido y la actuación del profesional. Tu
